@@ -15,9 +15,9 @@ Use the functionnality of the FileManager.default.
 Develop a class for read and write in a file in a simply way. 
 
 Here the code:
-'''
+```
 func main() -> int {
   print("hello world");
   return 1;
 }
-'''
+
