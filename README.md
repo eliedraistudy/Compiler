@@ -12,12 +12,22 @@ See also the website: http://www.nand2tetris.org
 
 Learn to read/write from/in a file. 
 Use the functionnality of the FileManager.default. 
-Develop a class for read and write in a file in a simply way. 
+Develop a class for read and write in a file in a simply way.
 
-Here the code:
+### Basic syntax
+
+Use `let` for declaring constants.
+```let x: Int = 3```
+Use `var` for declaring variables.
 ```
-func main() -> int {
+var x: Int = 3
+x = 4
+```
+
+Here the code for a simple function (main): 
+```
+func main() -> Int {
   print("hello world");
   return 1;
 }
-
+```
