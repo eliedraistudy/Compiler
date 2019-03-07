@@ -8,5 +8,8 @@ The objective is to build a compiler for:
 See also the website: http://www.nand2tetris.org
 
 
-  0) Exercise 0
+0) Exercise 0
+
 Learn to read/write from/in a file
+Use the functionnality of the FileManager.default
+Develop a class for read and write in a simply way
