@@ -8,4 +8,6 @@ For a plain documentation, visit https://docs.swift.org/swift-book/.
 ```Bool```for boolean values.    
 ```String```for textual values.  
 
+There are also the 3 primary **collection type**: ```Array```, ```Set``` and ```Dictionnary```.   
+
 
