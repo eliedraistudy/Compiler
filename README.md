@@ -8,8 +8,9 @@ The final objective of this project is to build a compiler for:
 See also the website: http://www.nand2tetris.org.  
 
 
-During the project we will also learn to program in Swift.__  
-In this document we will report everything we learned.__
+During the project we will also learn to program in Swift.  
+In the document `SWIFT_basics.md` we will report everything we learned.
+
 ## Exercise 0
 
 Learn to read/write from/in a file. 
