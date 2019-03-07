@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BE6222D179D00530FE8 /* ex0.swift */; };
 		11F65BD7222C508700530FE8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BD6222C508700530FE8 /* main.swift */; };
 		11F65BDF222D128F00530FE8 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BDE222D128F00530FE8 /* test.swift */; };
-		11F65BE7222D179D00530FE8 /* ex0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BE6222D179D00530FE8 /* ex0.swift */; };
 		11F65BE9222D1CFB00530FE8 /* ex1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BE8222D1CFB00530FE8 /* ex1.swift */; };
 		11F65BEB222D1D0600530FE8 /* ex2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BEA222D1D0600530FE8 /* ex2.swift */; };
 		11F65BED222D1D0F00530FE8 /* ex3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BEC222D1D0F00530FE8 /* ex3.swift */; };
@@ -203,13 +203,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				11F65BD7222C508700530FE8 /* main.swift in Sources */,
-				11F65BE7222D179D00530FE8 /* ex0.swift in Sources */,
 				11F65BEB222D1D0600530FE8 /* ex2.swift in Sources */,
 				11F65BE9222D1CFB00530FE8 /* ex1.swift in Sources */,
 				11F65BED222D1D0F00530FE8 /* ex3.swift in Sources */,
 				11F65BEF222D1D1800530FE8 /* ex4.swift in Sources */,
 				11F65BF1222D1D2000530FE8 /* ex5.swift in Sources */,
 				11F65BF5222DC82F00530FE8 /* file.swift in Sources */,
+				11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */,
 				11F65BF3222D42B800530FE8 /* exercise.swift in Sources */,
 				11F65BDF222D128F00530FE8 /* test.swift in Sources */,
 			);

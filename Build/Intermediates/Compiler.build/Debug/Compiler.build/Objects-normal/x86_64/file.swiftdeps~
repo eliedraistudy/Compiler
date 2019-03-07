@@ -13,6 +13,7 @@ depends-top-level:
 - "CastingPrecedence"
 - "File"
 - !private "FileHandle"
+- !private "FileManager"
 - !private "NSString"
 - "String"
 - !private "StringLiteralType"
@@ -28,7 +29,9 @@ depends-member:
 - !private ["s7CVarArgP", "Encoding"]
 - !private ["s7CVarArgP", "_getBuiltinLogicValue"]
 - !private ["s7CVarArgP", "closeFile"]
+- !private ["s7CVarArgP", "createFile"]
 - !private ["s7CVarArgP", "data"]
+- !private ["s7CVarArgP", "default"]
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "init"]
 - !private ["s7CVarArgP", "readDataToEndOfFile"]
@@ -42,7 +45,9 @@ depends-member:
 - !private ["SL", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "Encoding"]
 - !private ["s28CustomDebugStringConvertibleP", "closeFile"]
+- !private ["s28CustomDebugStringConvertibleP", "createFile"]
 - !private ["s28CustomDebugStringConvertibleP", "data"]
+- !private ["s28CustomDebugStringConvertibleP", "default"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s28CustomDebugStringConvertibleP", "path"]
@@ -62,7 +67,9 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "Encoding"]
 - !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
 - !private ["s23CustomStringConvertibleP", "closeFile"]
+- !private ["s23CustomStringConvertibleP", "createFile"]
 - !private ["s23CustomStringConvertibleP", "data"]
+- !private ["s23CustomStringConvertibleP", "default"]
 - !private ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "path"]
@@ -86,7 +93,9 @@ depends-member:
 - !private ["SQ", "Encoding"]
 - !private ["SQ", "_getBuiltinLogicValue"]
 - !private ["SQ", "closeFile"]
+- !private ["SQ", "createFile"]
 - !private ["SQ", "data"]
+- !private ["SQ", "default"]
 - !private ["SQ", "init"]
 - !private ["SQ", "init"]
 - !private ["SQ", "path"]
@@ -108,11 +117,14 @@ depends-member:
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "data"]
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
 - !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- ["8Compiler4FileC", "File"]
 - !private ["8Compiler4FileC", "FileHandle"]
+- !private ["8Compiler4FileC", "FileManager"]
 - !private ["8Compiler4FileC", "NSString"]
 - ["8Compiler4FileC", "String"]
 - ["8Compiler4FileC", "URL"]
 - !private ["8Compiler4FileC", "UTF8"]
+- ["8Compiler4FileC", "create"]
 - ["8Compiler4FileC", "fileURL"]
 - ["8Compiler4FileC", "init"]
 - !private ["8Compiler4FileC", "print"]
@@ -123,10 +135,14 @@ depends-member:
 - !private ["So12NSFileHandleC", "readDataToEndOfFile"]
 - !private ["So12NSFileHandleC", "seekToEndOfFile"]
 - !private ["So12NSFileHandleC", "write"]
+- !private ["So13NSFileManagerC", "createFile"]
+- !private ["So13NSFileManagerC", "default"]
 - !private ["SH", "Encoding"]
 - !private ["SH", "_getBuiltinLogicValue"]
 - !private ["SH", "closeFile"]
+- !private ["SH", "createFile"]
 - !private ["SH", "data"]
+- !private ["SH", "default"]
 - !private ["SH", "init"]
 - !private ["SH", "init"]
 - !private ["SH", "path"]
@@ -153,13 +169,17 @@ depends-member:
 - !private ["So21NSItemProviderWritingP", "data"]
 - !private ["So16NSMutableCopyingP", "data"]
 - !private ["So8NSObjectC", "closeFile"]
+- !private ["So8NSObjectC", "createFile"]
 - !private ["So8NSObjectC", "data"]
+- !private ["So8NSObjectC", "default"]
 - !private ["So8NSObjectC", "init"]
 - !private ["So8NSObjectC", "readDataToEndOfFile"]
 - !private ["So8NSObjectC", "seekToEndOfFile"]
 - !private ["So8NSObjectC", "write"]
 - !private ["So8NSObjectP", "closeFile"]
+- !private ["So8NSObjectP", "createFile"]
 - !private ["So8NSObjectP", "data"]
+- !private ["So8NSObjectP", "default"]
 - !private ["So8NSObjectP", "init"]
 - !private ["So8NSObjectP", "readDataToEndOfFile"]
 - !private ["So8NSObjectP", "seekToEndOfFile"]
@@ -215,7 +235,9 @@ depends-member:
 - !private ["s33_ExpressibleByStringInterpolationP", "init"]
 - !private ["s35_HasCustomAnyHashableRepresentationP", "data"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "closeFile"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "createFile"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "data"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "default"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "readDataToEndOfFile"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "seekToEndOfFile"]
@@ -248,6 +270,7 @@ depends-nominal:
 - !private "s33ExpressibleByUnicodeScalarLiteralP"
 - "8Compiler4FileC"
 - !private "So12NSFileHandleC"
+- !private "So13NSFileManagerC"
 - !private "SH"
 - !private "s25LosslessStringConvertibleP"
 - !private "s10MirrorPathP"
@@ -299,4 +322,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "c94ebed76146ed285b7484f7281ab2fa"
+interface-hash: "9833924d6f999a5aee84ed0ad9749129"
