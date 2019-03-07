@@ -9,7 +9,7 @@ See also the website: http://www.nand2tetris.org.
 
 
 During the project we will also learn to program in Swift.  
-In the document [a relative link](SWIFT_basics.md) we will report everything we learned.
+In the document [Swift_basics.md](SWIFT_basics.md) we will report everything we learned.
 
 ## Exercise 0
 
