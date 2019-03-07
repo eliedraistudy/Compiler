@@ -6,3 +6,6 @@ The objective is to build a compiler for:
 - the assembly language HACK
 
 See also the website: http://www.nand2tetris.org
+
+##Exercise 0
+Learn to read/write from/in a file
