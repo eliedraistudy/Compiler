@@ -22,7 +22,17 @@ let x: Int = 0; //  So the value of x will never change during the execution of 
 Use `var` to declare variables:
 ```
 var x: Int = 0: // So the value of x could change during the execution of the current scope
+```
 
-
-
-
+### Printing constants and variables
+We can print the content of a variable/constant using the function `print(_:separator:terminator:)`. 
+For example the current code:
+```
+let s = "Hello World!";
+print(s);
+```
+By default, at the end, the function will add a newline character but we could change it in this way:  
+```
+let s = "Hello World!";
+print(s, terminator:" "); // which means add a space character after the printing
+```
