@@ -41,4 +41,19 @@ Swift uses **string interpolation** to include the name of a constant or variabl
 let s = "Hello World!";
 print("The message is: \(s)");
 ```
-See [further](# String-and-characters) on the use of String and string interpolation
+See next paragraph on the use of String and string interpolation.
+
+### String and characters
+We can create a string in this way:
+```
+var s = "Hello World!"
+```
+
+We can also define a string which spans multiple lines:
+```
+var s = """
+  The White Rabbit put on his spectacles.  "Where shall I begin,
+  please your Majesty?" he asked.
+  "Begin at the beginning," the King said gravely, "and go on
+  till you come to the end; then stop."
+  """
