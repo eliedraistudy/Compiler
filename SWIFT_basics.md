@@ -43,7 +43,7 @@ print("The message is: \(s)");
 ```
 See next paragraph on the use of String and string interpolation.
 
-### String and characters
+## String and characters
 We can create a string in this way:
 ```
 var s = "Hello World!"
@@ -57,3 +57,33 @@ var s = """
   "Begin at the beginning," the King said gravely, "and go on
   till you come to the end; then stop."
   """
+```
+
+### Iterate over String
+We can interate over strings by using the `for-in` statement. 
+```
+var x = "1234567890";
+for character in x{
+  print(character, terminator=" ");
+}
+```
+And the output will be: ```1 2 3 4 5 6 7 8 9 0 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
