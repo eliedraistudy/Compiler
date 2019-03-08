@@ -41,4 +41,4 @@ Swift uses **string interpolation** to include the name of a constant or variabl
 let s = "Hello World!";
 print("The message is: \(s)");
 ```
-See [further](# String and characters) on the use of String and string interpolation
+See [further](# String-and-characters) on the use of String and string interpolation
