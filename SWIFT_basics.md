@@ -36,3 +36,9 @@ By default, at the end, the function will add a newline character but we could c
 let s = "Hello World!";
 print(s, terminator:" "); // which means add a space character after the printing
 ```
+Swift uses **string interpolation** to include the name of a constant or variable as a placeholder in a longer string, and to prompt Swift to replace it with the current value of that constant or variable. We could use it this way:  
+```
+let s = "Hello World!";
+print("The message is: \(s)");
+```
+See [further](#String and characters) on the use of String and string interpolation
