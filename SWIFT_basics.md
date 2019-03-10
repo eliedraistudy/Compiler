@@ -86,6 +86,11 @@ s[s.index(s.startIndex, offsetBy: 7)] //'o'
 
 ## Loops and control flow
 
+### *If* statement
+### *Switch* statement
+### *For* statement
+### *While* and *repeat-until* statement
+
 ------------------------------------
 
 ## Functions
@@ -93,6 +98,9 @@ s[s.index(s.startIndex, offsetBy: 7)] //'o'
 ------------------------------------
 
 ## Struct and classes
+
+### Struct
+### Class
 
 ------------------------------------
 
