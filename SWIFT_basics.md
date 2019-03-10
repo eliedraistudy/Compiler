@@ -67,7 +67,18 @@ for character in x{
   print(character, terminator=" ");
 }
 ```
-And the output will be: ```1 2 3 4 5 6 7 8 9 0 ```
+And the output will be: ```1 2 3 4 5 6 7 8 9 0 ```. 
+
+We can get the value of a specific character in the given string using this operations:  
+```
+var s = "Hello guys!"
+s[s.startIndex] //'H'
+s[s.index(before: s.endIndex)] //'!'
+s[s.index(after: s.startIndex)] //'e'
+s[s.index(s.startIndex, offsetBy: 7)] //'o'
+```
+
+
 
 
 
