@@ -25,7 +25,7 @@ var x: Int = 0: // So the value of x could change during the execution of the cu
 ```
 
 ### Printing constants and variables
-We can print the content of a variable/constant using the function `print(_:separator:terminator:)`. 
+We can print the content of a variable/constant using the function `print(_:separator:terminator:)`.  
 For example the current code:
 ```
 let s = "Hello World!";
