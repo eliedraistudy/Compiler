@@ -91,8 +91,19 @@ s[s.index(s.startIndex, offsetBy: 7)] //'o'
 *Dictionnaries* are unordered collections of key-value association.
 
 ### Array
-Creating an empty array: ```var someInts = [Int]()```.  
-Appending value: ```someInts.append(3)```.
+Creating an empty array: 
+```
+var someInts = [Int]() // create empty array of int
+```
+Appending value: 
+```
+someInts.append(3) // insert '3' into the array
+```
+Create an array with default values
+```
+someInts = Array(repeating: 1, count: 10)
+```
+
 
 ### Set
 
