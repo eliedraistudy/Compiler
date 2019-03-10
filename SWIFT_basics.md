@@ -1,4 +1,4 @@
-# Basics of the Swift programming language
+# Basics of the *Swift* programming language
 
 For a plain documentation, visit https://docs.swift.org/swift-book/. 
 
