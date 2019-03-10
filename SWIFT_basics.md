@@ -101,7 +101,7 @@ someInts.append(3) // insert '3' into the array
 ```
 Create an array with default values
 ```
-someInts = Array(repeating: 1, count: 10)
+someInts = Array(repeating: 1, count: 10) // create an array of 10 times '1'
 ```
 
 
