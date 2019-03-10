@@ -13,6 +13,8 @@ There are also the 3 primary **collection type**: ```Array```, ```Set``` and ```
 Swift also introduces the __optional type__. Optionals say either “there is a value, and it equals x” or “there isn’t a value at all”.  
 We use those values in this way: ```String?```(for optionnal String).  
 
+------------------------------------
+
 ## Constants and variables
 
 Use `let` to declare constants:  
@@ -42,6 +44,8 @@ let s = "Hello World!";
 print("The message is: \(s)");
 ```
 See next paragraph on the use of String and string interpolation.
+
+------------------------------------
 
 ## String and characters
 We can create a string in this way:
