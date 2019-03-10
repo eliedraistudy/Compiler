@@ -84,6 +84,22 @@ s[s.index(s.startIndex, offsetBy: 7)] //'o'
 
 ------------------------------------
 
+## Collections
+
+*Arrays* are ordered collections of values.
+*Set* are unordered collections of unique values.
+*Dictionnaries* are unordered collections of key-value association.
+
+### Array
+Creating an empty array: ```var someInts = [Int]()```. 
+Appending value: ```someInts.append(3)```.
+
+### Set
+
+### Dictionnary
+
+------------------------------------
+
 ## Loops and control flow
 
 ### *If* statement
