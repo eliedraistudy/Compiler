@@ -20,6 +20,10 @@ func hello() -> String {
     return "Hello"
 }
 
+func hello2() {
+    print("Hello")
+}
+
 func compute_exercise1(){
     
     ex1_introduction()
