@@ -1,14 +1,17 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
 - "ex1_introduction"
+- "hello"
 - "compute_exercise1"
 provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
+- "String"
 - !private "StringLiteralType"
 - "compute_exercise1"
 - "ex1_introduction"
+- "hello"
 - !private "print"
 depends-member:
 - !private ["SK", "init"]
@@ -121,4 +124,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "477ea71fde4f352962434bf9247232a9"
+interface-hash: "6b1724599e25f2eeba11f1b273e8a378"

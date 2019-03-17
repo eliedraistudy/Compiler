@@ -16,6 +16,10 @@ func ex1_introduction(){
     print("---------------------")
 }
 
+func hello() -> String {
+    return "Hello"
+}
+
 func compute_exercise1(){
     
     ex1_introduction()
