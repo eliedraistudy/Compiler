@@ -70,7 +70,13 @@ func compute_exercise0(){
                 for line in lines{
                     asm.write(sentence: line)
                     
-                    if line.contains("you"){
+//                    if line.contains("you"){
+//                        print(line)
+//                    }
+                    
+                    var wordsInLine = line.characters.split(separator: " ")
+                    if wordsInLine[0].elementsEqual("you") || wordsInLine[0].elementsEqual("are")
+                    {
                         print(line)
                     }
                 }
