@@ -18,3 +18,8 @@ Use the functionnality of the FileManager.default.
 Develop a class for read and write in a file in a simply way.
 
 
+## Exercise 1
+
+Create a translator from vm file to hack file.  
+The vm file: \*.vm   
+The hack file \*.asm
