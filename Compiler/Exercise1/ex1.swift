@@ -16,12 +16,25 @@ func ex1_introduction(){
     print("---------------------")
 }
 
-func hello() -> String {
-    return "Hello"
-}
-
-func hello2() {
-    print("Hello")
+func translate_push(command: String) -> String{
+    var str: String = ""
+    
+    let str_command = command.split(separator: " ")
+    
+    //  simple 'push constant number'
+    if(str_command[1] == "constant"){
+        let number = str_command[2]
+        
+        str = "@\(number)\n"
+        str+="D=A\n"
+        str+="@SP\n"
+        str+="A=M\n"
+        str+="M=D\n"
+        str+="@SP\n"
+        str+="M=M+1\n"
+    }
+    
+    return str
 }
 
 func compute_exercise1(){
