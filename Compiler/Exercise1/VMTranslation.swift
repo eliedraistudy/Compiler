@@ -15,7 +15,7 @@ func error() -> String{
 }
 
 func translate_pop(command: [Substring]) -> String{
-    
+    return ""
 }
 
 func translate_push(command: [Substring]) -> String{

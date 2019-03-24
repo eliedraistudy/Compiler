@@ -42,39 +42,6 @@ func push(command_list: [Substring]) -> String{
     return operation
 }
 
-/*
-func translate(command: String)->String{
-    /*
-     Function to translate every kind of command from vm to hack
-     */
-    let command_list = command.split(separator: " ")
-    
-    if command_list[0] == "//"{
-        return ""
-    }
-    
-    switch(command_list[0]){
-        
-    case "//":
-        //  commentary case
-        return ""
-        
-    case "push":
-        //  push case
-        return push(command_list: command_list)
-        
-    case "pop":
-        //  pop case
-        return ""
-        
-    default:
-        //  default case
-        return ""
-        
-    }
-}
-*/
-
 
 
 
