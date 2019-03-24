@@ -42,8 +42,29 @@ func push(command_list: [Substring]) -> String{
     return operation
 }
 
+func translate_push(command: String) -> String{
+    var str: String = ""
+    
+    let str_command = command.split(separator: " ")
+    
+    //  simple 'push constant number'
+    if(str_command[1] == "constant"){
+        let number = str_command[2]
+        
+        str = "@\(number)\n"
+        str+="D=A\n"
+        str+="@SP\n"
+        str+="A=M\n"
+        str+="M=D\n"
+        str+="@SP\n"
+        str+="M=M+1\n"
+    }
+    
+    return str
+}
 
-func translate(command: String)->String{
+
+func translate(command: String) -> String{
     /*
      Function to translate every kind of command from vm to hack
      */
@@ -74,30 +95,6 @@ func translate(command: String)->String{
     }
 }
 
-
-
-
-
-func translate_push(command: String) -> String{
-    var str: String = ""
-    
-    let str_command = command.split(separator: " ")
-    
-    //  simple 'push constant number'
-    if(str_command[1] == "constant"){
-        let number = str_command[2]
-        
-        str = "@\(number)\n"
-        str+="D=A\n"
-        str+="@SP\n"
-        str+="A=M\n"
-        str+="M=D\n"
-        str+="@SP\n"
-        str+="M=M+1\n"
-    }
-    
-    return str
-}
 
 func compute_exercise1(){
     
