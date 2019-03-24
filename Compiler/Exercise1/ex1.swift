@@ -12,7 +12,7 @@ import Foundation
 func ex1_introduction(){
     print("\n\n")
     print("---------------------")
-    print("Welcome to Exercise 1")
+    print("Welcome to Exercise 1: Building a VM translator")
     print("---------------------")
 }
 

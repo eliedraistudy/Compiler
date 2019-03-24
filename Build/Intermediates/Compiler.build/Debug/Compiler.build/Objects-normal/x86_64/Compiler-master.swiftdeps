@@ -1,10 +1,11 @@
 version: "Apple Swift version 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)"
 options: "291324baa28568cbd5b9cda6a129ab7a"
-build_time: [1552898974, 872551000]
+build_time: [1553154464, 404444000]
 inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1552836048, 0]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise2/ex2.swift": [1552836048, 0]
-  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise1/ex1.swift": [1552840553, 0]
+  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise1/ex1.swift": [1553154438, 0]
+  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise1/VMTranslation.swift": [9223372036, 854775807]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise3/ex3.swift": [1552836048, 0]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise4/ex4.swift": [1552836048, 0]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/ex5.swift": [1552836048, 0]
