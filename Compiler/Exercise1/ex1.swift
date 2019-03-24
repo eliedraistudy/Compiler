@@ -16,30 +16,22 @@ func ex1_introduction(){
     print("---------------------")
 }
 
-func push(command_list: [Substring]) -> String{
-    /*
-     Function to translate push command
-     */
-    var operation = ""
+
+
+
+func translate_file(path: URL){
     
-    switch(command_list[1]){
-        
-    case "constant":
-        //  the constant case
-        operation = "@\(command_list[2])\n"
-        operation+="D=A\n"
-        operation+="@SP\n"
-        operation+="A=M\n"
-        operation+="M=D\n"
-        operation+="@SP\n"
-        operation+="M=M+1\n"
-        
-    default:
-        //  default case
-        return ""
+    let inFile = File(filePath: path.absoluteString)
+    let outFile = File.create(filePath: "output.asm")
+    
+    let content = inFile.read()
+    var lines: [String] = []
+    content.enumerateLines{ line, _ in lines.append(line)}
+    
+    for line in lines{
+        var VMTranslate = translate(command: line)
+        outFile.write(sentence: VMTranslate)
     }
-    
-    return operation
 }
 
 
@@ -50,4 +42,16 @@ func push(command_list: [Substring]) -> String{
 func compute_exercise1(){
     
     ex1_introduction()
+    let file = "Desktop/" + readLine()!
+    
+    
+    let fileURL = URL.init(fileURLWithPath: file,
+                           relativeTo: FileManager.default.homeDirectoryForCurrentUser)
+/*URL.init(fileURLWithPath: FileManager.default.homeDirectoryForCurrentUser.absoluteString + "Desktop/" + file)/*URL.init(
+        fileURLWithPath: FileManager.default.homeDirectoryForCurrentUser.absoluteString + "Desktop/" + file,
+        isDirectory: false)*/*/
+
+    print(fileURL.absoluteString)
+    //translate_file(
+        //path: fileURL)
 }

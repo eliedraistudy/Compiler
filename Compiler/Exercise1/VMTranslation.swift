@@ -11,7 +11,7 @@ import Foundation
 
 
 func error() -> String{
-    return "Error in the script"
+    return "Error in the script\n"
 }
 
 func translate_pop(command: [Substring]) -> String{
