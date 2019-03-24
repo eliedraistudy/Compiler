@@ -9,7 +9,7 @@
 import Foundation
 
 enum Segment:
-String{
+String {
     case Local = "local"
     case Argument = "argument"
     case This = "this"
@@ -21,21 +21,24 @@ String{
 }
 
 enum Branching:
-String{
+String {
     case Label = "label"
     case Goto = "goto"
     case If_Goto = "if-goto"
+    case If_True = "IF_TRUE"
+    case If_False = "IF_FALSE"
+    case End_Program = "END_OF_PROGRAM"
 }
 
 enum Function:
-String{
+String {
     case Function = "function"
     case Call = "call"
     case Return = "return"
 }
 
 enum Command:
-String{
+String {
     case Push = "push"
     case Pop = "pop"
     case Add = "add"
