@@ -57,7 +57,7 @@ class File{
         return String(decoding: data!, as: UTF8.self)
     }
     
-    static func create(filePath: String) -> File{
+    static func create(filePath: String) -> File {
         FileManager.default.createFile(
             atPath: filePath,
             contents: nil,
