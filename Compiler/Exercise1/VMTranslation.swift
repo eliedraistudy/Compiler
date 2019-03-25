@@ -10,9 +10,10 @@ import Foundation
 
 // ***** MEMORY TREATMENT *****
 
+/*
 func error() -> String {
     return "Error in the script\n"
-}
+}*/
 
 func translate_pop(command: [Substring]) -> String {
     return ""

@@ -13,46 +13,23 @@ func ex1_introduction()
 {
     print("\n\n")
     print("---------------------")
-    print("Welcome to Exercise 1: Building a VM translator")
+    print("Welcome to Exercise 1: \nBuilding a VM translator")
     print("---------------------\n\n")
-}
-
-
-func translate_file(path: URL) {
-    
-    let inFile = File(filePath: path.path)
-    
-    var outFileURL = path
-    outFileURL.deletePathExtension()
-    outFileURL.appendPathExtension("asm")
-//    print(outFileURL.absoluteString)
-    
-    let outFile = File.create(filePath: outFileURL.path)
-    
-    let content = inFile.read()
-    var lines: [String] = []
-    content.enumerateLines{ line, _ in lines.append(line)}
-    
-    for line in lines {
-        let lineToVM = translate(command: line)
-        outFile.write(sentence: lineToVM)
-    }
 }
 
 func compute_exercise1() {
     
     ex1_introduction()
     
-    print("Please, enter the file name with the .vm extension")
+    print("Please, enter the file name with the .vm extension:")
     let file = "Desktop/" + readLine()!
     
     let fileURL = URL.init(fileURLWithPath: file,
                            relativeTo: FileManager.default.homeDirectoryForCurrentUser)
     
-/*URL.init(fileURLWithPath: FileManager.default.homeDirectoryForCurrentUser.absoluteString + "Desktop/" + file)/*URL.init(
-        fileURLWithPath: FileManager.default.homeDirectoryForCurrentUser.absoluteString + "Desktop/" + file,
-        isDirectory: false)*/*/
-    //print(fileURL.absoluteString)
-
-    translate_file(path: fileURL)
+    //  translate the file
+    VMFile.init(inputFilePath: fileURL).translate()
+    
+    //  debug info
+    print("Translation done...")
 }
