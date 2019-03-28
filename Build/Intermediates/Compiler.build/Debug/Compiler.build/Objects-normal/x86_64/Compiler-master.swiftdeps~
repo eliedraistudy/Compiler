@@ -1,6 +1,6 @@
 version: "Apple Swift version 5.0 (swiftlang-1001.0.69.5 clang-1001.0.46.3)"
 options: "b2c404f707bf5827aed63e4bc8444b25"
-build_time: [1553807353, 97569000]
+build_time: [1553807366, 75897000]
 inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1553801701, 654871273]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise2/ex2.swift": [1553801701, 652120720]
@@ -11,7 +11,6 @@ inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise4/ex4.swift": [1553801701, 653191043]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/ex5.swift": [1553801701, 653762431]
   "/Users/cyberoot/Documents/Compiler/Compiler/file.swift": [1553801701, 654422620]
-  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise0/ex0.swift": [1553801701, 639987776]
-  "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1553805612, 472930371]
-  "/Users/cyberoot/Documents/Compiler/Compiler/exercise.swift": [1553801701, 639390327]
-  "/Users/cyberoot/Documents/Compiler/Test/test.swift": [1553801701, 697615583]
+  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise0/ex0.swift": !dirty [1553801701, 639987776]
+  "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": !dirty [1553805612, 472930371]
+  "/Users/cyberoot/Documents/Compiler/Test/test.swift": !dirty [1553801701, 697615583]

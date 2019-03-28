@@ -46,7 +46,7 @@ class VMCommand{
             
         case 0:
             //  NO-OP
-            translated_command += ""
+            translated_command = ""
             
         case 1:
             //  operation case
