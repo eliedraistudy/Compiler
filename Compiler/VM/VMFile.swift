@@ -26,10 +26,10 @@ class VMFile{
     
     func translate(){
         //  open the inputFile
-        let inFile = File(filePath: inputFileURL.absoluteString)
+        let inFile = File(filePath: inputFileURL.path)
         
         //  create the outFile
-        let outFile = File.create(filePath: outputFileURL.absoluteString)
+        let outFile = File.create(filePath: outputFileURL.path)
         
         //  iterate over each line of the input file to write it to the out file
         let content = inFile.read()
@@ -39,8 +39,9 @@ class VMFile{
         for line in lines {
             //  get the command
             let command = VMCommand(line: line, file: outputFileURL.lastPathComponent)
+            let translation = command.translate()
             //  write the translated command into the file
-            outFile.write(sentence: command.translate())
+            outFile.write(sentence: translation)
         }
     }
 }

@@ -5,7 +5,6 @@ provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
-- !private "StringLiteralType"
 - "ex5_introduction"
 - !private "print"
 depends-member:

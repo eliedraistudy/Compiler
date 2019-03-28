@@ -6,43 +6,68 @@ provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
-- !private "StringLiteralType"
 - !private "URL"
+- !private "VMFile"
 - "compute_exercise1"
 - "ex1_introduction"
 - !private "print"
 depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "absoluteString"]
+- !private ["s28CustomDebugStringConvertibleP", "deletingLastPathComponent"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
 - !private ["s23CustomStringConvertibleP", "absoluteString"]
+- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
+- !private ["s23CustomStringConvertibleP", "appendLiteral"]
+- !private ["s23CustomStringConvertibleP", "deletingLastPathComponent"]
 - !private ["s23CustomStringConvertibleP", "init"]
 - !private ["Se", "absoluteString"]
+- !private ["Se", "deletingLastPathComponent"]
 - !private ["Se", "init"]
+- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
+- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
 - !private ["SE", "absoluteString"]
+- !private ["SE", "deletingLastPathComponent"]
 - !private ["SE", "init"]
 - !private ["SQ", "absoluteString"]
+- !private ["SQ", "deletingLastPathComponent"]
 - !private ["SQ", "init"]
 - !private ["SH", "absoluteString"]
+- !private ["SH", "deletingLastPathComponent"]
 - !private ["SH", "init"]
 - !private ["10Foundation20ReferenceConvertibleP", "absoluteString"]
+- !private ["10Foundation20ReferenceConvertibleP", "deletingLastPathComponent"]
 - !private ["10Foundation20ReferenceConvertibleP", "init"]
+- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
+- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
+- !private ["s16TextOutputStreamP", "appendInterpolation"]
+- !private ["s16TextOutputStreamP", "appendLiteral"]
 - !private ["10Foundation3URLV", "absoluteString"]
+- !private ["10Foundation3URLV", "deletingLastPathComponent"]
 - !private ["10Foundation3URLV", "init"]
+- !private ["8Compiler6VMFileC", "init"]
+- !private ["8Compiler6VMFileC", "translate"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "absoluteString"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "deletingLastPathComponent"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "init"]
 - !private ["s34_ExpressibleByFileReferenceLiteralP", "absoluteString"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "deletingLastPathComponent"]
 - !private ["s34_ExpressibleByFileReferenceLiteralP", "init"]
 - !private ["s21_ObjectiveCBridgeableP", "absoluteString"]
+- !private ["s21_ObjectiveCBridgeableP", "deletingLastPathComponent"]
 - !private ["s21_ObjectiveCBridgeableP", "init"]
 depends-nominal:
 - !private "s28CustomDebugStringConvertibleP"
 - !private "s23CustomStringConvertibleP"
 - !private "Se"
+- !private "s26DefaultStringInterpolationV"
 - !private "SE"
 - !private "SQ"
 - !private "SH"
 - !private "10Foundation20ReferenceConvertibleP"
+- !private "s27StringInterpolationProtocolP"
+- !private "s16TextOutputStreamP"
 - !private "10Foundation3URLV"
+- !private "8Compiler6VMFileC"
 - !private "s30_CustomPlaygroundQuickLookableP"
 - !private "s34_ExpressibleByFileReferenceLiteralP"
 - !private "s21_ObjectiveCBridgeableP"

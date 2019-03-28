@@ -30,40 +30,36 @@ class VMCommand{
         /*
          The purpose of this function is to translate the main command
          */
-        var translated_command: String = ""
+        
         
         //  case of commentary
         if (command.starts(with: Command.Commentary.rawValue)) {
             //        translated_command = ""
             //        *** I wrote return here because in the continuation, the program can analyse the rest of the command and it's not necessary ***
-            return translated_command
+            return ""
+            
         }
-        
+        var translated_command: String = "//\(command)\n"
         let list = command.split(separator: " ")
         
         switch(list.count) {
             
         case 0:
             //  NO-OP
-            translated_command = ""
+            translated_command += ""
             
         case 1:
             //  operation case
-            translated_command = translate_operation()
+            translated_command += translate_operation()
             
         case 3:
             //  stack case
-            if (list[0].elementsEqual(Command.Push.rawValue)) {
-                translated_command = translate_push(command: list)
-            }
-            
-            if (list[1].elementsEqual(Command.Pop.rawValue)) {
-                translated_command = translate_pop(command: list)
-            }
+            translated_command += translate_stack(command: list)
+        
             
         default:
             //  error in the script
-            translated_command = error()
+            translated_command += error()
         }
         
         return translated_command

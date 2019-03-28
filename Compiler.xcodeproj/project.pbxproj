@@ -10,7 +10,6 @@
 		11129F4D22495A7600EE3D4F /* VMCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4C22495A7600EE3D4F /* VMCommand.swift */; };
 		11129F4F22495C9A00EE3D4F /* VMFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4E22495C9A00EE3D4F /* VMFile.swift */; };
 		11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BE6222D179D00530FE8 /* ex0.swift */; };
-		11CF582A2243791D00DA4D82 /* VMTranslation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF58292243791D00DA4D82 /* VMTranslation.swift */; };
 		11CF582C2247A2FD00DA4D82 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF582B2247A2FD00DA4D82 /* Enum.swift */; };
 		11F65BD7222C508700530FE8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BD6222C508700530FE8 /* main.swift */; };
 		11F65BDF222D128F00530FE8 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BDE222D128F00530FE8 /* test.swift */; };
@@ -19,7 +18,6 @@
 		11F65BED222D1D0F00530FE8 /* ex3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BEC222D1D0F00530FE8 /* ex3.swift */; };
 		11F65BEF222D1D1800530FE8 /* ex4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BEE222D1D1800530FE8 /* ex4.swift */; };
 		11F65BF1222D1D2000530FE8 /* ex5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BF0222D1D2000530FE8 /* ex5.swift */; };
-		11F65BF3222D42B800530FE8 /* exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BF2222D42B800530FE8 /* exercise.swift */; };
 		11F65BF5222DC82F00530FE8 /* file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BF4222DC82F00530FE8 /* file.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +36,6 @@
 /* Begin PBXFileReference section */
 		11129F4C22495A7600EE3D4F /* VMCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCommand.swift; sourceTree = "<group>"; };
 		11129F4E22495C9A00EE3D4F /* VMFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMFile.swift; sourceTree = "<group>"; };
-		11CF58292243791D00DA4D82 /* VMTranslation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMTranslation.swift; sourceTree = "<group>"; };
 		11CF582B2247A2FD00DA4D82 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		11F65BD3222C508700530FE8 /* Compiler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Compiler; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F65BD6222C508700530FE8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -49,7 +46,6 @@
 		11F65BEC222D1D0F00530FE8 /* ex3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex3.swift; sourceTree = "<group>"; };
 		11F65BEE222D1D1800530FE8 /* ex4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex4.swift; sourceTree = "<group>"; };
 		11F65BF0222D1D2000530FE8 /* ex5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex5.swift; sourceTree = "<group>"; };
-		11F65BF2222D42B800530FE8 /* exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exercise.swift; sourceTree = "<group>"; };
 		11F65BF4222DC82F00530FE8 /* file.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = file.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,7 +98,6 @@
 				11F65BE1222D175300530FE8 /* Exercise1 */,
 				11F65BE0222D174B00530FE8 /* Exercise0 */,
 				11F65BD6222C508700530FE8 /* main.swift */,
-				11F65BF2222D42B800530FE8 /* exercise.swift */,
 				11F65BF4222DC82F00530FE8 /* file.swift */,
 			);
 			path = Compiler;
@@ -128,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				11F65BE8222D1CFB00530FE8 /* ex1.swift */,
-				11CF58292243791D00DA4D82 /* VMTranslation.swift */,
 			);
 			path = Exercise1;
 			sourceTree = "<group>";
@@ -229,14 +223,12 @@
 				11129F4F22495C9A00EE3D4F /* VMFile.swift in Sources */,
 				11CF582C2247A2FD00DA4D82 /* Enum.swift in Sources */,
 				11F65BE9222D1CFB00530FE8 /* ex1.swift in Sources */,
-				11CF582A2243791D00DA4D82 /* VMTranslation.swift in Sources */,
 				11F65BED222D1D0F00530FE8 /* ex3.swift in Sources */,
 				11F65BEF222D1D1800530FE8 /* ex4.swift in Sources */,
 				11F65BF1222D1D2000530FE8 /* ex5.swift in Sources */,
 				11F65BF5222DC82F00530FE8 /* file.swift in Sources */,
 				11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */,
 				11129F4D22495A7600EE3D4F /* VMCommand.swift in Sources */,
-				11F65BF3222D42B800530FE8 /* exercise.swift in Sources */,
 				11F65BDF222D128F00530FE8 /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
