@@ -74,7 +74,7 @@ func compute_exercise0(){
 //                        print(line)
 //                    }
                     
-                    var wordsInLine = line.characters.split(separator: " ")
+                    var wordsInLine = [""]//line.characters.split(separator: " ")
                     if wordsInLine[0].elementsEqual("you") || wordsInLine[0].elementsEqual("are")
                     {
                         print(line)

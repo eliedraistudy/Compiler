@@ -21,15 +21,16 @@ func compute_exercise1() {
     
     ex1_introduction()
     
-    print("Please, enter the file name with the .vm extension:")
-    let file = "Desktop/" + readLine()!
+    //print("Please, enter the file name with the .vm extension:")
+    //let file = "Desktop/" + readLine()!
     
-    let fileURL = URL.init(fileURLWithPath: file,
-                           relativeTo: FileManager.default.homeDirectoryForCurrentUser)
+    let fileURL = URL.init(fileURLWithPath: "hello.vm")
+                           /*relativeTo: FileManager.default.homeDirectoryForCurrentUser*/
     
     //  translate the file
-    VMFile.init(inputFilePath: fileURL).translate()
+    //VMFile.init(inputFilePath: fileURL).translate()
     
     //  debug info
-    print("Translation done...")
+    //print("Translation done...")
+    print(fileURL.absoluteString)
 }

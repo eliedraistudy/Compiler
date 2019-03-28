@@ -15,10 +15,12 @@ func error() -> String{
 class VMCommand{
     
     var command: String
+    var fileName: String
     
     //  CTOR
-    init(line: String){
+    init(line: String, file: String){
         command = line
+        fileName = String(file.dropLast(4))
     }
     
     
@@ -241,45 +243,107 @@ class VMCommand{
     
     //  PUSH and POP REGION
     
-    private func translate_pop(command: [Substring]) -> String {
-        return ""
-    }
-    
-    private func translate_push(command: [Substring]) -> String {
-        
+    private func translate_stack(command: [Substring]) -> String {
         var str: String = ""
-        let number = command[2]
+        let arg = command[2]
+        var key: String
+        var base: Int
         
         let seg = String(command[1])
         
         switch(seg) {
             
         case Segment.Constant.rawValue:
-            str = "@\(number)\n"
+            str = "@\(arg)\n"
             str += "D=A\n"
-            str += "@SP\n"
-            str += "A=M\n"
-            str += "M=D\n"
-            str += "@SP\n"
-            str += "M=M+1\n"
             
-        case Segment.Local.rawValue: break
+        case Segment.Local.rawValue:
+            key = "LCL"
+            str+="@\(key)\n"
+            str+="D=A\n"
+            str+="@\(arg)\n"
+            str+="D=D+M\n"
             
-        case Segment.Argument.rawValue: break
+        case Segment.Argument.rawValue:
+            key = "ARG"
+            str+="@\(key)\n"
+            str+="D=A\n"
+            str+="@\(arg)\n"
+            str+="D=D+M\n"
             
-        case Segment.Static.rawValue: break
+        case Segment.Static.rawValue:
+            str+="@\(fileName).\(arg)\n"
             
-        case Segment.That.rawValue: break
+        case Segment.That.rawValue:
+            key = "THAT"
+            str+="@\(key)\n"
+            str+="D=A\n"
+            str+="@\(arg)\n"
+            str+="D=D+M\n"
             
-        case Segment.This.rawValue: break
+        case Segment.This.rawValue:
+            key = "THIS"
+            str+="@\(key)\n"
+            str+="D=A\n"
+            str+="@\(arg)\n"
+            str+="D=D+M\n"
             
-        case Segment.Temp.rawValue: break
+        case Segment.Temp.rawValue:
+            base = 3
+            str+="@\(base)\n"
+            str+="D=A\n"
+            str+="@\(arg)\n"
+            str+="D=D+A\n"
             
-        case Segment.Pointer.rawValue: break
+        case Segment.Pointer.rawValue:
+            base = 5
+            str+="@\(base)\n"
+            str+="D=A\n"
+            str+="@\(arg)\n"
+            str+="D=D+A\n"
             
         default:
             return error()
         }
+        
+        
+        switch String(command[0]) {
+        case Command.Push.rawValue:
+            //  push common code
+            str+=push_command()
+            
+        case Command.Pop.rawValue:
+            // pop common code
+            str+=pop_command()
+            
+        default:
+            return error()
+        }
+        
+        return str
+    }
+    
+    private func pop_command() -> String {
+        var str = ""
+        str+="@R13\n"
+        str+="M=D\n"
+        str+="@SP\n"
+        str+="A=M-1\n"
+        str+="D=M\n"
+        str+="@R13\n"
+        str+="A=M\n"
+        str+="M=D\n"
+        return str
+    }
+    
+    private func push_command() -> String{
+        var str = ""
+        str+="@SP\n"
+        str+="A=M\n"
+        str+="M=D\n"
+        str+="D=A+1\n"
+        str+="@SP\n"
+        str+="M=D\n"
         return str
     }
     

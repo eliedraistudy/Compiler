@@ -38,7 +38,7 @@ class VMFile{
         
         for line in lines {
             //  get the command
-            let command = VMCommand(line: line)
+            let command = VMCommand(line: line, file: outputFileURL.lastPathComponent)
             //  write the translated command into the file
             outFile.write(sentence: command.translate())
         }
