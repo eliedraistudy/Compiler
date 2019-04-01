@@ -35,8 +35,8 @@ func compute_exercise0(){
      */
     
     //  INTRODUCTION
-    let exercise = Exercise(number: 0)
-    exercise.introduction()
+    //let exercise = Exercise(number: 0)
+    //exercise.introduction()
     
     //  GET ALL FILES IN A [String]
     let directory =

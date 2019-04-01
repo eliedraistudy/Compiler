@@ -12,6 +12,10 @@ func error() -> String{
     return "Error during the translation"
 }
 
+func Line(value: String) -> String{
+    return value + "\n"
+}
+
 class VMCommand{
     
     var command: String
@@ -36,7 +40,7 @@ class VMCommand{
         if (command.starts(with: Command.Commentary.rawValue)) {
             //        translated_command = ""
             //        *** I wrote return here because in the continuation, the program can analyse the rest of the command and it's not necessary ***
-            return ""
+            return "//"
             
         }
         var translated_command: String = "//\(command)\n"
@@ -231,6 +235,10 @@ class VMCommand{
         //    result += "(\(Branching.If_False.rawValue))\n"
         result += "@SP\n"
         result += "M=M-1\n"
+        
+        /*
+         
+         */
         
         return result
     }

@@ -72,7 +72,8 @@ func compute(choice: String?){
 func main(){
     introduction()
     compute(choice: choice())
-    print("\n\n\n")
+
+    print("\n\n")
 }
 
 main()

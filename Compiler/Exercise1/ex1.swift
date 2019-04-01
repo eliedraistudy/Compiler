@@ -8,6 +8,28 @@
 
 import Foundation
 
+func translate_all_files(directory: URL){
+    //  function to translate all files in the debug directory
+    
+    let files_list =
+        get_all_files(
+            from: directory)
+    
+    //  ITERATE OVER EACH FILE
+    for fileName in  files_list{
+        //  get the file
+        let filePath = directory.path + "/" + fileName
+        let fileURL = URL(fileURLWithPath: filePath, isDirectory: false)
+        
+        //  if the file is of type "vm"
+        if fileURL.pathExtension == "vm"{
+            //  debug info
+            print("Translate the file: \(fileName)")
+            VMFile.init(inputFilePath: fileURL).translate()
+        }
+    }
+}
+
 
 func ex1_introduction()
 {
@@ -21,17 +43,9 @@ func compute_exercise1() {
     
     ex1_introduction()
     
-    //print("Please, enter the file name with the .vm extension:")
-    let fileName = "StaticTest.vm"
-    
-    
-    let fileURL = URL.init(fileURLWithPath: fileName)
-    print("Your input file is: \(fileURL.absoluteString)")
-    
-    //  translate the file
-    VMFile.init(inputFilePath: fileURL).translate()
+    translate_all_files(
+        directory: URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/VMFiles"))
     
     //  debug info
     print("Translation done...")
-    print("Your output file is at \(fileURL.deletingLastPathComponent())")
 }
