@@ -185,16 +185,16 @@ class VMCommand{
         
         switch param {
         case .Eq:
-            operationVM += "D;JEQ"
+            operationVM = "D;JEQ"
             
         case .Lt:
-            operationVM += "D;JLT"
+            operationVM = "D;JLT"
             
         case .Gt:
-            operationVM += "D;JGT"
+            operationVM = "D;JGT"
             
         default:
-            operationVM += ""
+            operationVM = ""
         }
         
         var result = ""
