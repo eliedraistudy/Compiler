@@ -36,9 +36,15 @@ class VMFile{
         var lines: [String] = []
         content.enumerateLines{ line, _ in lines.append(line)}
         
+        var count = 0
         for line in lines {
+            
             //  get the command
-            let command = VMCommand(line: line, file: outputFileURL.lastPathComponent)
+            let command = VMCommand(
+                line: line,
+                file: outputFileURL.lastPathComponent,
+                counter: count)
+            count += 1
             let translation = command.translate()
             //  write the translated command into the file
             outFile.write(sentence: translation)

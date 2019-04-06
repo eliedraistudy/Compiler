@@ -20,11 +20,13 @@ class VMCommand{
     
     var command: String
     var fileName: String
+    var count: Int
     
     //  CTOR
-    init(line: String, file: String){
+    init(line: String, file: String, counter: Int){
         command = line
         fileName = String(file.dropLast(4))
+        count = counter
     }
     
     
@@ -186,6 +188,8 @@ class VMCommand{
          */
         
         var operationVM = ""
+        let label1 = "IF_TRUE\(count)"
+        let label2 = "IF_FALSE\(count)"
         
         switch param {
         case .Eq:
@@ -198,7 +202,7 @@ class VMCommand{
             operationVM = "D;JGT"
             
         default:
-            operationVM = ""
+            operationVM = "ERROR"
         }
         
         var result = ""
@@ -207,38 +211,37 @@ class VMCommand{
         result += "A=M-1\n"
         result += "D=M\n"
         result += "A=A-1\n"
-        result += "D=D-M\n"
+        
+        if(param == .Eq){
+            result += "D=D-M\n"
+        }
+        else{
+            result += "D=M-D\n"
+        }
+        
         // Loading in A Register the target to jump if D = 0 (the condition is met)
-        result += "@\(Branching.If_True.rawValue)\n"
+        result += "@\(label1)\n"
         result += operationVM + "\n"
-        // Writing in the first comparator register the value 0 (FAILURE)
-        result += "@0\n"
-        result += "D=A\n"
-        result += "@\(Branching.End_Program)\n"
-        result += "0;JMP\n"
-        //    result += "@SP\n"
-        //    result += "A=M-1\n"
-        //    result += "A=A-1\n"
-        //    result += "M=D\n"
-        //    result += "@\(Branching.If_False.rawValue)\n"
-        //    result += "0;JMP\n"
-        // Declaration of the label IF_TRUE
-        result += "(\(Branching.If_True))\n"
-        // Writing in the first comparator register the value 1 (SUCCESS)
-        result += "@1\n"
-        result += "D=A\n"
-        result += "(\(Branching.End_Program))\n"
+        
+        result += "D=0\n"
         result += "@SP\n"
         result += "A=M-1\n"
         result += "A=A-1\n"
         result += "M=D\n"
-        //    result += "(\(Branching.If_False.rawValue))\n"
+        
+        result += "@\(label2)\n"
+        result += "0;JMP\n"
+        
+        result += "(\(label1))\n"
+        result += "D=-1\n"
+        result += "@SP\n"
+        result += "A=M-1\n"
+        result += "A=A-1\n"
+        result += "M=D\n"
+
+        result += "(\(label2))\n"
         result += "@SP\n"
         result += "M=M-1\n"
-        
-        /*
-         
-         */
         
         return result
     }
