@@ -60,7 +60,13 @@ class VMCommand{
             
         case 3:
             //  stack case
-            translated_command += translate_stack(command: list)
+            if(list[0] == "pop"){
+                translated_command += translate_pop(command: list)
+            }
+            else{
+                translated_command += translate_push(command: list)
+            }
+            //translated_command += translate_stack(command: list)
         
             
         default:
@@ -152,16 +158,16 @@ class VMCommand{
         
         switch param {
         case .Add:
-            operationVM += "D=D+M"
+            operationVM += "D=M+D"
             
         case .Sub:
-            operationVM += "D=D-M"
+            operationVM += "D=M-D"
             
         case .And:
-            operationVM += "D=D&M"
+            operationVM += "D=M&D"
             
         case .Or:
-            operationVM += "D=D|M"
+            operationVM += "D=M|D"
             
         default:
             operationVM += ""
@@ -351,6 +357,223 @@ class VMCommand{
         str+="D=A+1\n"
         str+="@SP\n"
         str+="M=D\n"
+        return str
+    }
+    
+    private func pushD() -> String {
+        var str = ""
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+        return str
+    }
+    
+    private func translate_push(command: [Substring]) -> String{
+        
+        //  command struct:
+        //  push [seg] [arg]
+        var str: String = ""
+        let arg = command[2]
+        var key: String
+        var base: Int
+        let seg = String(command[1])
+        
+        
+        switch(seg){
+            
+        case Segment.Constant.rawValue:
+            //  constant
+            str += "@\(arg)\n"
+            str += "D=A\n"
+            str += pushD()
+            return str
+            
+        case Segment.Temp.rawValue:
+            //  temp
+            var val = 5
+            val += Int(arg)!
+            str += "@\(val)\n"
+            str += "D=M\n"
+            str += pushD()
+            return str
+            
+        case Segment.Local.rawValue:
+            //  lcl
+            str += "@\(arg)\n"
+            str += "D=A\n"
+            str += "@LCL\n"
+            str += "A=M+D\n"
+            str += "D=M\n"
+            str += pushD()
+            return str
+            
+        case Segment.This.rawValue:
+            //  this
+            str += "@\(arg)\n"
+            str += "D=A\n"
+            str += "@THIS\n"
+            str += "A=M+D\n"
+            str += "D=M\n"
+            str += pushD()
+            return str
+            
+        case Segment.That.rawValue:
+            //  that
+            str += "@\(arg)\n"
+            str += "D=A\n"
+            str += "@THAT\n"
+            str += "A=M+D\n"
+            str += "D=M\n"
+            str += pushD()
+            return str
+            
+        case Segment.Argument.rawValue:
+            //  arg
+            str += "@\(arg)\n"
+            str += "D=A\n"
+            str += "@ARG\n"
+            str += "A=M+D\n"
+            str += "D=M\n"
+            str += pushD()
+            return str
+            
+        case Segment.Static.rawValue:
+            //  static to do
+            return ""
+            
+        case Segment.Pointer.rawValue:
+            //  pointer
+            let c = Int(arg)!
+            if(c==0){
+                str += "@THIS\n"
+            }
+            else if(c==1){
+                str += "@THAT\n"
+            }
+            str += "D=M\n"
+            str += pushD()
+            return str
+            
+        default:
+            return error()
+        }
+    }
+    
+    private func translate_pop(command: [Substring]) -> String{
+        var str: String = ""
+        let arg = command[2]
+        var key: String
+        var base: Int
+        let seg = String(command[1])
+        
+        //  popD
+        str += "@SP\n"
+        str += "A=M-1\n"
+        str += "D=M\n"
+        
+        switch(seg){
+        case Segment.Temp.rawValue:
+                //  case temp
+                var val = 5
+                val += Int(arg)!
+            
+        case Segment.Local.rawValue:
+            // case local
+            str += "@LCL\n"
+            str += "A=M\n"
+            let val = Int(arg)!
+            if(val>=1){
+                for _ in 1...val{
+                    str += "A=A+1\n"
+                }
+            }
+            
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M-1\n"
+            return str
+            
+        case Segment.This.rawValue:
+            //  case this
+            str += "@THIS\n"
+            str += "A=M\n"
+            let val = Int(arg)!
+            if(val>=1){
+                for _ in 1...val{
+                    str += "A=A+1\n"
+                }
+            }
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M-1\n"
+            return str
+            
+        case Segment.That.rawValue:
+            //  case that
+            str += "@THAT\n"
+            str += "A=M\n"
+            let val = Int(arg)!
+            if(val>=1){
+                for _ in 1...val{
+                    str += "A=A+1\n"
+                }
+            }
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M-1\n"
+            return str
+            
+        case Segment.Argument.rawValue:
+            //  case argument
+            str += "@ARG\n"
+            str += "A=M\n"
+            let val = Int(arg)!
+            if(val>=1){
+                for _ in 1...val{
+                    str += "A=A+1\n"
+                }
+            }
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M-1\n"
+            return str
+            
+        case Segment.Static.rawValue:
+            //  case static
+            //  TODO
+            str += "@THIS\n"
+            str += "A=M\n"
+            let val = Int(arg)!
+            if(val>=1){
+                for _ in 1...val{
+                    str += "A=A+1\n"
+                }
+            }
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M-1\n"
+            return str
+            
+        case Segment.Pointer.rawValue:
+            //  case pointer
+            let val = Int(arg)!
+            if(val == 0){
+                str += "@THIS\n"
+            }
+            else if(val == 1){
+                str += "@THAT\n"
+            }
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M-1\n"
+            
+        default:
+            return error()
+        }
+        
+        
         return str
     }
     
