@@ -42,7 +42,7 @@ class VMCommand{
         if (command.starts(with: Command.Commentary.rawValue)) {
             //        translated_command = ""
             //        *** I wrote return here because in the continuation, the program can analyse the rest of the command and it's not necessary ***
-            return "//"
+            return ""
             
         }
         var translated_command: String = "//\(command)\n"
@@ -63,7 +63,7 @@ class VMCommand{
             if(list[0] == "pop"){
                 translated_command += translate_pop(command: list)
             }
-            else{
+            else if(list[0] == "push"){
                 translated_command += translate_push(command: list)
             }
             //translated_command += translate_stack(command: list)
@@ -139,12 +139,12 @@ class VMCommand{
         
         var result = ""
         
-        result += "@0\n"
+        result += "@SP\n"
         result += "A=M-1\n"
         result += operationVM + "\n"
-        result += "D=A+1\n"
-        result += "@SP\n"
-        result += "M=D\n"
+//        result += "D=A+1\n"
+//        result += "@SP\n"
+//        result += "M=D\n"
         
         return result
     }
@@ -479,7 +479,7 @@ class VMCommand{
     }
     
     private func translate_pop(command: [Substring]) -> String{
-        var str: String = ""
+        var str = ""
         let arg = command[2]
         var key: String
         var base: Int
@@ -492,9 +492,15 @@ class VMCommand{
         
         switch(seg){
         case Segment.Temp.rawValue:
-                //  case temp
-                var val = 5
-                val += Int(arg)!
+            //  case temp
+            var val = 5
+            val += Int(arg)!
+            str += "@\(val)\n"
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M-1\n"
+            return str
+            
             
         case Segment.Local.rawValue:
             // case local
