@@ -441,7 +441,24 @@ class VMCommand{
             
         case Segment.Static.rawValue:
             //  static to do
-            return ""
+            str = "@\(fileName).\(arg)\n"
+            /*
+            //  python
+            str += "D=M\n"
+            str += "@SP\n"
+            str += "A=M\n"
+            str += "M=D\n"
+            str += "D=A+1\n"
+            str += "@SP\n"
+            str += "M=D\n"
+            */
+            
+            //  raph
+            str += "@\(fileName).\(arg)\n"
+            str += "D=M\n"
+            str += pushD()
+ 
+            return str
             
         case Segment.Pointer.rawValue:
             //  pointer
@@ -542,18 +559,27 @@ class VMCommand{
             
         case Segment.Static.rawValue:
             //  case static
-            //  TODO
-            str += "@THIS\n"
+            str = "@\(fileName).\(arg)\n"
+            /*
+            //  python
+            str += "D=M\n"
+            str += "@R13\n"
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "A=M-1\n"
+            str += "D=M\n"
+            str += "@R13\n"
             str += "A=M\n"
-            let val = Int(arg)!
-            if(val>=1){
-                for _ in 1...val{
-                    str += "A=A+1\n"
-                }
-            }
+            str += "M=D\n"
+            */
+            //  raph
+            str += popD()
+            str += "@\(fileName).\(arg)\n"
             str += "M=D\n"
             str += "@SP\n"
             str += "M=M-1\n"
+            
+            
             return str
             
         case Segment.Pointer.rawValue:
@@ -574,6 +600,14 @@ class VMCommand{
         }
         
         
+        return str
+    }
+    
+    private func popD() -> String {
+        var str = ""
+        str += "@SP\n"
+        str += "A=M-1\n"
+        str += "D=M\n"
         return str
     }
     
