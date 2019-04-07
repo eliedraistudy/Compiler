@@ -1,6 +1,6 @@
 version: "Apple Swift version 5.0 (swiftlang-1001.0.69.5 clang-1001.0.46.3)"
 options: "b2c404f707bf5827aed63e4bc8444b25"
-build_time: [1554633736, 753119000]
+build_time: [1554645884, 467098000]
 inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1554124802, 836661556]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise2/ex2.swift": [1553801701, 652120720]
@@ -12,5 +12,5 @@ inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/ex5.swift": [1553801701, 653762431]
   "/Users/cyberoot/Documents/Compiler/Compiler/file.swift": [1553801701, 654422620]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise0/ex0.swift": [1554123691, 817316920]
-  "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1554633731, 581194236]
+  "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1554633871, 335608680]
   "/Users/cyberoot/Documents/Compiler/Test/test.swift": [1553801701, 697615583]

@@ -11,12 +11,19 @@ import Foundation
 func ex2_introduction(){
     print("\n\n")
     print("---------------------")
-    print("Welcome to Exercise 2")
-    print("---------------------")
+    print("Welcome to Exercise 1:")
+    print("Building a VM translator 2/2")
+    print("---------------------\n\n")
 }
 
 func compute_exercise2(){
     
     ex2_introduction()
+    
+    translate_all_files(
+        directory: URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/VMFiles02"))
+    
+    //  debug info
+    print("Translation done...")
 }
 
