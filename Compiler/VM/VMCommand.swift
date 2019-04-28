@@ -58,6 +58,10 @@ class VMCommand{
             //  operation case
             translated_command += translate_operation()
             
+        case 2:
+            //  label case
+            translated_command += translate_flow(command: list)
+            
         case 3:
             //  stack case
             if(list[0] == "pop"){
@@ -65,6 +69,12 @@ class VMCommand{
             }
             else if(list[0] == "push"){
                 translated_command += translate_push(command: list)
+            }
+            else if(list[0] == "call"){
+                translated_command += translate_call(command: list)
+            }
+            else if(list[0] == "function"){
+                translated_command += translate_function(command: list)
             }
             //translated_command += translate_stack(command: list)
         
@@ -80,8 +90,60 @@ class VMCommand{
     
     ///  OPERATIONS REGION
     
+    private func translate_flow(command: [Substring]) -> String {
+        
+        switch(command[0]){
+        case "label":
+            return translate_label()
+            
+        case "goto":
+            return translate_goto()
+            
+        case "if-goto":
+            return translate_if_goto()
+            
+        default:
+            return "ERROR TRANSLATING THE COMMAND \(command)"
+        }
+    }
+    
+    private func translate_label() -> String {
+        var str = ""
+        
+        let list = command.split(separator: " ")
+        str = "(\(fileName).\(list[1]))\n"
+        
+        return str;
+    }
+    
+    private func translate_goto() -> String {
+        var str = ""
+        let list = command.split(separator: " ")
+        
+        str += "@\(fileName).\(list[1])\n"
+        str += "0;JMP\n"
+        return str
+    }
+    
+    private func translate_if_goto() -> String {
+        var str = ""
+        let list = command.split(separator: " ")
+        
+        str += "@SP\n"
+        str += "M=M-1\n"
+        str += "A=M\n"
+        str += "D=M\n"
+        str += "@\(fileName).\(list[1])\n"
+        str += "D;JNE\n"
+        return str
+    }
+    
     private func translate_operation() -> String{
         switch(command) {
+            
+        // return case
+        case Function.Return.rawValue:
+            return translate_return()
             
         // Unary operations : Neg, Not
         case Command.Neg.rawValue:
@@ -477,6 +539,191 @@ class VMCommand{
             return error()
         }
     }
+    
+    private func translate_call(command: [Substring]) -> String {
+        //  call g n
+        
+        var str = ""
+        //  first, save on the stack the current variables
+        
+        //  push return address
+        str += "@\(command[1]).ReturnAddress\n"
+        str += "D=A\n"
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+        
+        //  push LCL
+        str += "@LCL"
+        str += "D=M\n"
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+        
+        //  push ARG
+        str += "@ARG"
+        str += "D=M\n"
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+
+        //  push THIS
+        str += "@THIS"
+        str += "D=M\n"
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+        
+        //  push THAT
+        str += "@THAT"
+        str += "D=M\n"
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+        
+        //  ARG = SP-n-5
+        str += "@SP\n"
+        str += "D=M\n"
+        let newARG = Int(String(command[2]))!-5
+        str += "@\(newARG)\n" // = n-5
+        str += "D=D-A\n"
+        str += "@ARG\n"
+        str += "M=D\n"
+        
+        //  LCL = SP
+        str += "@SP\n"
+        str += "D=M\n"
+        str += "@LCL\n"
+        str += "M=D\n"
+        
+        //  goto g
+        str += "@\(command[1])\n"
+        str += "0;JMP\n"
+        
+        
+        return str
+    }
+    
+    
+    private func translate_return() -> String {
+        //  return
+        
+        var str = ""
+        
+        //  FRAME = LCL
+        str += "@LCL\n"
+        str += "D=M\n"
+        
+        //  RET = *(FRAME-5)
+        //  RAM[13] = (LOCAL-5)
+        str += "@5\n"
+        str += "A=D-A\n"
+        str += "D=M\n"
+        str += "@13\n"
+        str += "M=D\n"
+        
+        //  *ARG = pop()
+        str += "@SP/n"
+        str += "M=M-1\n"
+        str += "A=M\n"
+        str += "D=M\n"
+        str += "@ARG\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        
+        
+        //  SP = ARG + 1
+        str += "@ARG\n"
+        str += "D=M\n"
+        str += "@SP\n"
+        str += "M=D+1\n"
+        
+        // THAT = *(FRAME-1)
+        str += "@LCL\n"
+        str += "M=M-1\n"
+        str += "A=M\n"
+        str += "D=M\n"
+        str += "@THAT\n"
+        str += "M=D\n"
+        
+        //  THIS = *(FRAME-2)
+        str += "@LCL\n"
+        str += "M=M-1\n"
+        str += "A=M\n"
+        str += "D=M\n"
+        str += "@THIS\n"
+        str += "M=D\n"
+        
+        //  ARG = *(FRAME-3)
+        str += "@LCL\n"
+        str += "M=M-1\n"
+        str += "A=M\n"
+        str += "D=M\n"
+        str += "@ARG\n"
+        str += "M=D\n"
+        
+        //  LCL = *(FRAME-4)
+        str += "@LCL\n"
+        str += "M=M-1\n"
+        str += "A=M\n"
+        str += "D=M\n"
+        str += "@LCL\n"
+        str += "M=D\n"
+        
+        //  goto RET
+        str += "@13\n"
+        str += "A=M\n"
+        str += "0;JMP\n"
+        
+        return str
+    }
+    
+    
+    private func translate_function(command: [Substring]) -> String{
+        //  function g k
+        var str = ""
+        
+        //  label g
+        str += "(\(command[1]))\n"
+        
+        //  init local variables
+        let k = Int(String(command[2]))!
+        str += "@\(k)\n"
+        str += "D=A\n"
+        str += "@\(fileName).End\n"
+        str += "D;JEQ\n"
+        
+        //  if k != 0 --> loop
+        str += "(\(fileName).Loop)\n"
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=0\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+        str += "@\(fileName).Loop\n"
+        str += "D=D-1\n"
+        str += "D;JNE\n"
+        
+        //  if k == 0 --> end
+        str += "(\(fileName).End)\n"
+        //  repeat k times:
+        //  push 0
+    
+        
+        return str
+    }
+    
+    
     
     private func translate_pop(command: [Substring]) -> String{
         var str = ""
