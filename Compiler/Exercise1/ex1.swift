@@ -8,27 +8,7 @@
 
 import Foundation
 
-func translate_all_files(directory: URL){
-    //  function to translate all files in the debug directory
-    
-    let files_list =
-        get_all_files(
-            from: directory)
-    
-    //  ITERATE OVER EACH FILE
-    for fileName in  files_list{
-        //  get the file
-        let filePath = directory.path + "/" + fileName
-        let fileURL = URL(fileURLWithPath: filePath, isDirectory: false)
-        
-        //  if the file is of type "vm"
-        if fileURL.pathExtension == "vm"{
-            //  debug info
-            print("Translate the file: \(fileName)")
-            VMFile.init(inputFilePath: fileURL).translate()
-        }
-    }
-}
+
 
 
 func ex1_introduction()

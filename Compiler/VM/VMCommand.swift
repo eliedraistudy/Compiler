@@ -45,6 +45,17 @@ class VMCommand{
             return ""
             
         }
+        
+        //  remove commentaries
+        if let commentary_position = command.index(of: "//") {
+            let substring = command[..<commentary_position]
+            command = String(substring)
+        }
+        //  remove tab
+        while let range = command.index(of: "\t"){
+            command.remove(at: range)
+        }
+        
         var translated_command: String = "//\(command)\n"
         let list = command.split(separator: " ")
         
@@ -556,7 +567,7 @@ class VMCommand{
         str += "M=M+1\n"
         
         //  push LCL
-        str += "@LCL"
+        str += "@LCL\n"
         str += "D=M\n"
         str += "@SP\n"
         str += "A=M\n"
@@ -565,7 +576,7 @@ class VMCommand{
         str += "M=M+1\n"
         
         //  push ARG
-        str += "@ARG"
+        str += "@ARG\n"
         str += "D=M\n"
         str += "@SP\n"
         str += "A=M\n"
@@ -574,7 +585,7 @@ class VMCommand{
         str += "M=M+1\n"
 
         //  push THIS
-        str += "@THIS"
+        str += "@THIS\n"
         str += "D=M\n"
         str += "@SP\n"
         str += "A=M\n"
@@ -583,7 +594,7 @@ class VMCommand{
         str += "M=M+1\n"
         
         //  push THAT
-        str += "@THAT"
+        str += "@THAT\n"
         str += "D=M\n"
         str += "@SP\n"
         str += "A=M\n"
@@ -633,7 +644,7 @@ class VMCommand{
         str += "M=D\n"
         
         //  *ARG = pop()
-        str += "@SP/n"
+        str += "@SP\n"
         str += "M=M-1\n"
         str += "A=M\n"
         str += "D=M\n"
@@ -698,26 +709,36 @@ class VMCommand{
         
         //  init local variables
         let k = Int(String(command[2]))!
-        str += "@\(k)\n"
-        str += "D=A\n"
-        str += "@\(fileName).End\n"
-        str += "D;JEQ\n"
-        
-        //  if k != 0 --> loop
-        str += "(\(fileName).Loop)\n"
-        str += "@SP\n"
-        str += "A=M\n"
-        str += "M=0\n"
-        str += "@SP\n"
-        str += "M=M+1\n"
-        str += "@\(fileName).Loop\n"
-        str += "D=D-1\n"
-        str += "D;JNE\n"
-        
-        //  if k == 0 --> end
-        str += "(\(fileName).End)\n"
-        //  repeat k times:
-        //  push 0
+        let f = String(command[1]).replacingOccurrences(of: ".", with: "")
+        for i in 0...k {
+            str += "@0\n"
+            str += "D=A\n"
+            str += "@SP\n"
+            str += "A=M\n"
+            str += "M=D\n"
+            str += "@SP\n"
+            str += "M=M+1\n"
+        }
+//        str += "@\(k)\n"
+//        str += "D=A\n"
+//        str += "@\(f).End\n"
+//        str += "D;JEQ\n"
+//
+//        //  if k != 0 --> loop
+//        str += "(\(f).Loop)\n"
+//        str += "@SP\n"
+//        str += "A=M\n"
+//        str += "M=0\n"
+//        str += "@SP\n"
+//        str += "M=M+1\n"
+//        str += "@\(f).Loop\n"
+//        str += "D=D-1\n"
+//        str += "D;JNE\n"
+//
+//        //  if k == 0 --> end
+//        str += "(\(f).End)\n"
+//        //  repeat k times:
+//        //  push 0
     
         
         return str

@@ -1,6 +1,5 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
-- "translate_all_files"
 - "ex1_introduction"
 - "compute_exercise1"
 provides-nominal:
@@ -8,85 +7,48 @@ provides-member:
 provides-dynamic-lookup:
 depends-top-level:
 - !private "+"
-- !private "=="
-- !private "BooleanLiteralType"
 - !private "FileManager"
-- "URL"
-- !private "UnicodeScalarType"
-- !private "VMFile"
+- !private "StringLiteralType"
+- !private "URL"
 - "compute_exercise1"
 - "ex1_introduction"
-- !private "get_all_files"
 - !private "print"
-- "translate_all_files"
+- !private "translate_all_files"
 depends-member:
 - !private ["s7CVarArgP", "currentDirectoryPath"]
 - !private ["s7CVarArgP", "default"]
 - !private ["s28CustomDebugStringConvertibleP", "currentDirectoryPath"]
 - !private ["s28CustomDebugStringConvertibleP", "default"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
-- !private ["s28CustomDebugStringConvertibleP", "path"]
-- !private ["s28CustomDebugStringConvertibleP", "pathExtension"]
-- !private ["s23CustomStringConvertibleP", "appendInterpolation"]
-- !private ["s23CustomStringConvertibleP", "appendLiteral"]
 - !private ["s23CustomStringConvertibleP", "currentDirectoryPath"]
 - !private ["s23CustomStringConvertibleP", "default"]
 - !private ["s23CustomStringConvertibleP", "init"]
-- !private ["s23CustomStringConvertibleP", "path"]
-- !private ["s23CustomStringConvertibleP", "pathExtension"]
 - !private ["Se", "init"]
-- !private ["Se", "path"]
-- !private ["Se", "pathExtension"]
-- !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
-- !private ["s26DefaultStringInterpolationV", "appendLiteral"]
 - !private ["SE", "init"]
-- !private ["SE", "path"]
-- !private ["SE", "pathExtension"]
 - !private ["SQ", "currentDirectoryPath"]
 - !private ["SQ", "default"]
 - !private ["SQ", "init"]
-- !private ["SQ", "path"]
-- !private ["SQ", "pathExtension"]
 - !private ["So13NSFileManagerC", "currentDirectoryPath"]
 - !private ["So13NSFileManagerC", "default"]
 - !private ["SH", "currentDirectoryPath"]
 - !private ["SH", "default"]
 - !private ["SH", "init"]
-- !private ["SH", "path"]
-- !private ["SH", "pathExtension"]
 - !private ["So8NSObjectC", "currentDirectoryPath"]
 - !private ["So8NSObjectC", "default"]
 - !private ["So8NSObjectP", "currentDirectoryPath"]
 - !private ["So8NSObjectP", "default"]
 - !private ["10Foundation20ReferenceConvertibleP", "init"]
-- !private ["10Foundation20ReferenceConvertibleP", "path"]
-- !private ["10Foundation20ReferenceConvertibleP", "pathExtension"]
-- !private ["s27StringInterpolationProtocolP", "appendInterpolation"]
-- !private ["s27StringInterpolationProtocolP", "appendLiteral"]
-- !private ["s16TextOutputStreamP", "appendInterpolation"]
-- !private ["s16TextOutputStreamP", "appendLiteral"]
 - !private ["10Foundation3URLV", "init"]
-- !private ["10Foundation3URLV", "path"]
-- !private ["10Foundation3URLV", "pathExtension"]
-- !private ["8Compiler6VMFileC", "init"]
-- !private ["8Compiler6VMFileC", "translate"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "init"]
-- !private ["s30_CustomPlaygroundQuickLookableP", "path"]
-- !private ["s30_CustomPlaygroundQuickLookableP", "pathExtension"]
 - !private ["s34_ExpressibleByFileReferenceLiteralP", "init"]
-- !private ["s34_ExpressibleByFileReferenceLiteralP", "path"]
-- !private ["s34_ExpressibleByFileReferenceLiteralP", "pathExtension"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "currentDirectoryPath"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "default"]
 - !private ["s21_ObjectiveCBridgeableP", "init"]
-- !private ["s21_ObjectiveCBridgeableP", "path"]
-- !private ["s21_ObjectiveCBridgeableP", "pathExtension"]
 depends-nominal:
 - !private "s7CVarArgP"
 - !private "s28CustomDebugStringConvertibleP"
 - !private "s23CustomStringConvertibleP"
 - !private "Se"
-- !private "s26DefaultStringInterpolationV"
 - !private "SE"
 - !private "SQ"
 - !private "So13NSFileManagerC"
@@ -94,10 +56,7 @@ depends-nominal:
 - !private "So8NSObjectC"
 - !private "So8NSObjectP"
 - !private "10Foundation20ReferenceConvertibleP"
-- !private "s27StringInterpolationProtocolP"
-- !private "s16TextOutputStreamP"
 - !private "10Foundation3URLV"
-- !private "8Compiler6VMFileC"
 - !private "s30_CustomPlaygroundQuickLookableP"
 - !private "s34_ExpressibleByFileReferenceLiteralP"
 - !private "10Foundation27_KeyValueCodingAndObservingP"
@@ -121,4 +80,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "97a702284b75059258a772d702fe9438"
+interface-hash: "477ea71fde4f352962434bf9247232a9"

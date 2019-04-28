@@ -8,6 +8,51 @@
 
 import Foundation
 
+func ex2_translate_all_files(directory: URL){
+    //  function to translate all files in the debug directory
+    
+    var files_list =
+        get_all_files(
+            from: directory)
+    
+    var k = 1
+    
+    print("All directories: ")
+    for fileName in files_list{
+        print("\(k)) " + fileName)
+        k += 1
+    }
+    print("Please, select a directory to translate:")
+    let choice: Int = Int(readLine()!)!
+    k = 1
+    var selected_dir = ""
+    for fileName in files_list{
+        if(k == choice){
+            selected_dir = fileName
+        }
+        k = k+1
+    }
+    
+    let new_directory = directory.appendingPathComponent(selected_dir, isDirectory: true)
+    files_list = get_all_files(from: new_directory)
+    
+    //  handle bootstrapping
+    
+    //  ITERATE OVER EACH FILE
+    for fileName in files_list{
+        //  get the file
+        let filePath = new_directory.path + "/" + fileName
+        let fileURL = URL(fileURLWithPath: filePath, isDirectory: false)
+        
+        //  if the file is of type "vm"
+        if fileURL.pathExtension == "vm"{
+            //  debug info
+            print("Translate the file: \(fileName)")
+            VMFile.init(inputFilePath: fileURL).translate()
+        }
+    }
+}
+
 func ex2_introduction(){
     print("\n\n")
     print("---------------------")
@@ -20,7 +65,7 @@ func compute_exercise2(){
     
     ex2_introduction()
     
-    translate_all_files(
+    ex2_translate_all_files(
         directory: URL(fileURLWithPath: FileManager.default.currentDirectoryPath + "/VMFiles02"))
     
     //  debug info

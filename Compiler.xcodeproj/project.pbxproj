@@ -10,6 +10,7 @@
 		11129F4D22495A7600EE3D4F /* VMCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4C22495A7600EE3D4F /* VMCommand.swift */; };
 		11129F4F22495C9A00EE3D4F /* VMFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4E22495C9A00EE3D4F /* VMFile.swift */; };
 		11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BE6222D179D00530FE8 /* ex0.swift */; };
+		11B38A222275A2A90093FE93 /* StringProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B38A212275A2A90093FE93 /* StringProtocolExtension.swift */; };
 		11CF582C2247A2FD00DA4D82 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF582B2247A2FD00DA4D82 /* Enum.swift */; };
 		11F65BD7222C508700530FE8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BD6222C508700530FE8 /* main.swift */; };
 		11F65BDF222D128F00530FE8 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BDE222D128F00530FE8 /* test.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		11129F4C22495A7600EE3D4F /* VMCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCommand.swift; sourceTree = "<group>"; };
 		11129F4E22495C9A00EE3D4F /* VMFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMFile.swift; sourceTree = "<group>"; };
+		11B38A212275A2A90093FE93 /* StringProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocolExtension.swift; sourceTree = "<group>"; };
 		11CF582B2247A2FD00DA4D82 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		11F65BD3222C508700530FE8 /* Compiler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Compiler; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F65BD6222C508700530FE8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				11F65BE0222D174B00530FE8 /* Exercise0 */,
 				11F65BD6222C508700530FE8 /* main.swift */,
 				11F65BF4222DC82F00530FE8 /* file.swift */,
+				11B38A212275A2A90093FE93 /* StringProtocolExtension.swift */,
 			);
 			path = Compiler;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			files = (
 				11F65BD7222C508700530FE8 /* main.swift in Sources */,
 				11F65BEB222D1D0600530FE8 /* ex2.swift in Sources */,
+				11B38A222275A2A90093FE93 /* StringProtocolExtension.swift in Sources */,
 				11129F4F22495C9A00EE3D4F /* VMFile.swift in Sources */,
 				11CF582C2247A2FD00DA4D82 /* Enum.swift in Sources */,
 				11F65BE9222D1CFB00530FE8 /* ex1.swift in Sources */,

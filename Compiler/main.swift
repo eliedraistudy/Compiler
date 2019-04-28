@@ -50,7 +50,7 @@ func compute(choice: String?){
         
     case "2":
         //compute_exercise2()
-        print("Sorry, not already built")
+        compute_exercise2()
         
     case "3":
         //compute_exercise3()
