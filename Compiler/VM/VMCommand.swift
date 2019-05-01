@@ -150,7 +150,8 @@ class VMCommand{
     }
     
     private func translate_operation() -> String{
-        switch(command) {
+        let trimmed_command = command.trimmingCharacters(in: .whitespacesAndNewlines)
+        switch(trimmed_command) {
             
         // return case
         case Function.Return.rawValue:
@@ -551,63 +552,54 @@ class VMCommand{
         }
     }
     
+    private func store_segment_pointer(segmentPointer: String) -> String {
+        var str = ""
+        str += "@\(segmentPointer)\n"
+        str += "D=M\n"
+        str += "@SP\n"
+        str += "A=M\n"
+        str += "M=D\n"
+        str += "@SP\n"
+        str += "M=M+1\n"
+        return str
+    }
+    
+    
     private func translate_call(command: [Substring]) -> String {
         //  call g n
+        
+        let label = "label_" + String(count)
+        
+        
         
         var str = ""
         //  first, save on the stack the current variables
         
         //  push return address
-        str += "@\(command[1]).ReturnAddress\n"
-        str += "D=A\n"
-        str += "@SP\n"
-        str += "A=M\n"
-        str += "M=D\n"
-        str += "@SP\n"
-        str += "M=M+1\n"
+        let push_return_address = "push constant \(label)".split(separator: " ")
+        str += translate_push(command: push_return_address)
         
         //  push LCL
-        str += "@LCL\n"
-        str += "D=M\n"
-        str += "@SP\n"
-        str += "A=M\n"
-        str += "M=D\n"
-        str += "@SP\n"
-        str += "M=M+1\n"
+        str += store_segment_pointer(segmentPointer: "LCL")
         
         //  push ARG
-        str += "@ARG\n"
-        str += "D=M\n"
-        str += "@SP\n"
-        str += "A=M\n"
-        str += "M=D\n"
-        str += "@SP\n"
-        str += "M=M+1\n"
-
+        str += store_segment_pointer(segmentPointer: "ARG")
+        
         //  push THIS
-        str += "@THIS\n"
-        str += "D=M\n"
-        str += "@SP\n"
-        str += "A=M\n"
-        str += "M=D\n"
-        str += "@SP\n"
-        str += "M=M+1\n"
+        str += store_segment_pointer(segmentPointer: "THIS")
         
         //  push THAT
-        str += "@THAT\n"
-        str += "D=M\n"
-        str += "@SP\n"
-        str += "A=M\n"
-        str += "M=D\n"
-        str += "@SP\n"
-        str += "M=M+1\n"
+        str += store_segment_pointer(segmentPointer: "THAT")
         
-        //  ARG = SP-n-5
+        
+        //  arguments
+        let argn = Int(String(command[2]))!
+        str += "@\(argn)\n"
+        str += "D=A\n"
+        str += "@5\n"
+        str += "D=D+A\n"
         str += "@SP\n"
-        str += "D=M\n"
-        let newARG = Int(String(command[2]))!-5
-        str += "@\(newARG)\n" // = n-5
-        str += "D=D-A\n"
+        str += "D=M-D\n"
         str += "@ARG\n"
         str += "M=D\n"
         
@@ -617,9 +609,29 @@ class VMCommand{
         str += "@LCL\n"
         str += "M=D\n"
         
-        //  goto g
+        //  goto
         str += "@\(command[1])\n"
-        str += "0;JMP\n"
+        str += "1;JMP\n"
+        str += "(\(label))\n"
+        
+//        //  ARG = SP-n-5
+//        str += "@SP\n"
+//        str += "D=M\n"
+//        let newARG = Int(String(command[2]))!-5
+//        str += "@\(newARG)\n" // = n-5
+//        str += "D=D-A\n"
+//        str += "@ARG\n"
+//        str += "M=D\n"
+//
+//        //  LCL = SP
+//        str += "@SP\n"
+//        str += "D=M\n"
+//        str += "@LCL\n"
+//        str += "M=D\n"
+//
+//        //  goto g
+//        str += "@\(command[1])\n"
+//        str += "0;JMP\n"
         
         
         return str
@@ -709,37 +721,12 @@ class VMCommand{
         
         //  init local variables
         let k = Int(String(command[2]))!
-        let f = String(command[1]).replacingOccurrences(of: ".", with: "")
-        for i in 0...k {
-            str += "@0\n"
-            str += "D=A\n"
-            str += "@SP\n"
-            str += "A=M\n"
-            str += "M=D\n"
-            str += "@SP\n"
-            str += "M=M+1\n"
+        if k != 0 {
+            for i in 0...k {
+                let push_constant_0 = "push constant 0".split(separator: " ")
+                str += translate_push(command: push_constant_0)
+            }
         }
-//        str += "@\(k)\n"
-//        str += "D=A\n"
-//        str += "@\(f).End\n"
-//        str += "D;JEQ\n"
-//
-//        //  if k != 0 --> loop
-//        str += "(\(f).Loop)\n"
-//        str += "@SP\n"
-//        str += "A=M\n"
-//        str += "M=0\n"
-//        str += "@SP\n"
-//        str += "M=M+1\n"
-//        str += "@\(f).Loop\n"
-//        str += "D=D-1\n"
-//        str += "D;JNE\n"
-//
-//        //  if k == 0 --> end
-//        str += "(\(f).End)\n"
-//        //  repeat k times:
-//        //  push 0
-    
         
         return str
     }

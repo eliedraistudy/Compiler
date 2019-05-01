@@ -37,6 +37,8 @@ func ex2_translate_all_files(directory: URL){
     files_list = get_all_files(from: new_directory)
     
     //  handle bootstrapping
+    //  count the number of vm files
+    var counter = 0
     
     //  ITERATE OVER EACH FILE
     for fileName in files_list{
@@ -44,11 +46,50 @@ func ex2_translate_all_files(directory: URL){
         let filePath = new_directory.path + "/" + fileName
         let fileURL = URL(fileURLWithPath: filePath, isDirectory: false)
         
+        
+        
+        
         //  if the file is of type "vm"
         if fileURL.pathExtension == "vm"{
+            counter = counter + 1
             //  debug info
             print("Translate the file: \(fileName)")
             VMFile.init(inputFilePath: fileURL).translate()
+        }
+        
+    }
+    
+    //  need to bootstrapping
+    if counter > 1{
+        //  create a new endingfile
+        let resultfilePath = new_directory.path + "/result.vm"
+        let fileURL = URL(fileURLWithPath: resultfilePath, isDirectory: false)
+        
+        //  create the file
+        let file = File(filePath: resultfilePath)
+        
+        //  set SP = 256
+        file.write(sentence: "//SP = 256")
+        file.write(sentence: "@256\nD=A\n@SP\nM=D\n")
+        
+        //  call Sys.init 0
+        let command = VMCommand(
+            line: "call Sys.init 0",
+            file: fileURL.deletingPathExtension().lastPathComponent,
+            counter: 10000)
+        file.write(sentence: command.translate())
+        
+        for fileName in files_list{
+            //  get the file
+            let filePath = new_directory.path + "/" + fileName
+            let fileURL = URL(fileURLWithPath: filePath, isDirectory: false)
+            
+            
+            //  if the file is of type "vm" and is not the result file then copy its content into result file
+            if fileURL.pathExtension == "vm"  && filePath != resultfilePath {
+                file.write(sentence: File(filePath: filePath).read())
+            }
+            
         }
     }
 }

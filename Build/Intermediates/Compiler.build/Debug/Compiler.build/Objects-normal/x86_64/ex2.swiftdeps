@@ -7,11 +7,15 @@ provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
+- !private "!="
+- !private "&&"
 - !private "+"
 - !private "+="
 - !private "=="
+- !private ">"
 - "AssignmentPrecedence"
 - !private "BooleanLiteralType"
+- !private "File"
 - !private "FileManager"
 - !private "FloatLiteralType"
 - !private "Int"
@@ -19,6 +23,7 @@ depends-top-level:
 - !private "StringLiteralType"
 - "URL"
 - !private "UnicodeScalarType"
+- !private "VMCommand"
 - !private "VMFile"
 - "compute_exercise2"
 - "ex2_introduction"
@@ -36,7 +41,9 @@ depends-member:
 - !private ["s28CustomDebugStringConvertibleP", "appendingPathComponent"]
 - !private ["s28CustomDebugStringConvertibleP", "currentDirectoryPath"]
 - !private ["s28CustomDebugStringConvertibleP", "default"]
+- !private ["s28CustomDebugStringConvertibleP", "deletingPathExtension"]
 - !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "lastPathComponent"]
 - !private ["s28CustomDebugStringConvertibleP", "path"]
 - !private ["s28CustomDebugStringConvertibleP", "pathExtension"]
 - !private ["s17CustomReflectableP", "init"]
@@ -45,33 +52,46 @@ depends-member:
 - !private ["s23CustomStringConvertibleP", "appendingPathComponent"]
 - !private ["s23CustomStringConvertibleP", "currentDirectoryPath"]
 - !private ["s23CustomStringConvertibleP", "default"]
+- !private ["s23CustomStringConvertibleP", "deletingPathExtension"]
 - !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "lastPathComponent"]
 - !private ["s23CustomStringConvertibleP", "path"]
 - !private ["s23CustomStringConvertibleP", "pathExtension"]
 - !private ["Se", "appendingPathComponent"]
+- !private ["Se", "deletingPathExtension"]
 - !private ["Se", "init"]
+- !private ["Se", "lastPathComponent"]
 - !private ["Se", "path"]
 - !private ["Se", "pathExtension"]
 - !private ["s26DefaultStringInterpolationV", "appendInterpolation"]
 - !private ["s26DefaultStringInterpolationV", "appendLiteral"]
 - !private ["SE", "appendingPathComponent"]
+- !private ["SE", "deletingPathExtension"]
 - !private ["SE", "init"]
+- !private ["SE", "lastPathComponent"]
 - !private ["SE", "path"]
 - !private ["SE", "pathExtension"]
 - !private ["SQ", "appendingPathComponent"]
 - !private ["SQ", "currentDirectoryPath"]
 - !private ["SQ", "default"]
+- !private ["SQ", "deletingPathExtension"]
 - !private ["SQ", "init"]
+- !private ["SQ", "lastPathComponent"]
 - !private ["SQ", "path"]
 - !private ["SQ", "pathExtension"]
 - !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["8Compiler4FileC", "init"]
+- !private ["8Compiler4FileC", "read"]
+- !private ["8Compiler4FileC", "write"]
 - !private ["So13NSFileManagerC", "currentDirectoryPath"]
 - !private ["So13NSFileManagerC", "default"]
 - !private ["s17FixedWidthIntegerP", "init"]
 - !private ["SH", "appendingPathComponent"]
 - !private ["SH", "currentDirectoryPath"]
 - !private ["SH", "default"]
+- !private ["SH", "deletingPathExtension"]
 - !private ["SH", "init"]
+- !private ["SH", "lastPathComponent"]
 - !private ["SH", "path"]
 - !private ["SH", "pathExtension"]
 - !private ["Si", "init"]
@@ -83,7 +103,9 @@ depends-member:
 - !private ["So8NSObjectP", "default"]
 - !private ["Sj", "init"]
 - !private ["10Foundation20ReferenceConvertibleP", "appendingPathComponent"]
+- !private ["10Foundation20ReferenceConvertibleP", "deletingPathExtension"]
 - !private ["10Foundation20ReferenceConvertibleP", "init"]
+- !private ["10Foundation20ReferenceConvertibleP", "lastPathComponent"]
 - !private ["10Foundation20ReferenceConvertibleP", "path"]
 - !private ["10Foundation20ReferenceConvertibleP", "pathExtension"]
 - !private ["s10SIMDScalarP", "init"]
@@ -95,25 +117,35 @@ depends-member:
 - !private ["s16TextOutputStreamP", "appendInterpolation"]
 - !private ["s16TextOutputStreamP", "appendLiteral"]
 - !private ["10Foundation3URLV", "appendingPathComponent"]
+- !private ["10Foundation3URLV", "deletingPathExtension"]
 - !private ["10Foundation3URLV", "init"]
+- !private ["10Foundation3URLV", "lastPathComponent"]
 - !private ["10Foundation3URLV", "path"]
 - !private ["10Foundation3URLV", "pathExtension"]
+- !private ["8Compiler9VMCommandC", "init"]
+- !private ["8Compiler9VMCommandC", "translate"]
 - !private ["8Compiler6VMFileC", "init"]
 - !private ["8Compiler6VMFileC", "translate"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "appendingPathComponent"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "deletingPathExtension"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "init"]
+- !private ["s30_CustomPlaygroundQuickLookableP", "lastPathComponent"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "path"]
 - !private ["s30_CustomPlaygroundQuickLookableP", "pathExtension"]
 - !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
 - !private ["s34_ExpressibleByFileReferenceLiteralP", "appendingPathComponent"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "deletingPathExtension"]
 - !private ["s34_ExpressibleByFileReferenceLiteralP", "init"]
+- !private ["s34_ExpressibleByFileReferenceLiteralP", "lastPathComponent"]
 - !private ["s34_ExpressibleByFileReferenceLiteralP", "path"]
 - !private ["s34_ExpressibleByFileReferenceLiteralP", "pathExtension"]
 - !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "currentDirectoryPath"]
 - !private ["10Foundation27_KeyValueCodingAndObservingP", "default"]
 - !private ["s21_ObjectiveCBridgeableP", "appendingPathComponent"]
+- !private ["s21_ObjectiveCBridgeableP", "deletingPathExtension"]
 - !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "lastPathComponent"]
 - !private ["s21_ObjectiveCBridgeableP", "path"]
 - !private ["s21_ObjectiveCBridgeableP", "pathExtension"]
 depends-nominal:
@@ -129,6 +161,7 @@ depends-nominal:
 - !private "SE"
 - !private "SQ"
 - !private "s27ExpressibleByIntegerLiteralP"
+- !private "8Compiler4FileC"
 - !private "So13NSFileManagerC"
 - !private "s17FixedWidthIntegerP"
 - !private "SH"
@@ -146,6 +179,7 @@ depends-nominal:
 - !private "s27StringInterpolationProtocolP"
 - !private "s16TextOutputStreamP"
 - !private "10Foundation3URLV"
+- !private "8Compiler9VMCommandC"
 - !private "8Compiler6VMFileC"
 - !private "s30_CustomPlaygroundQuickLookableP"
 - !private "s35_ExpressibleByBuiltinIntegerLiteralP"

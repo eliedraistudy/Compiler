@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/main.swift"
-            timestampString = "578143235.565369"
+            timestampString = "578151983.838627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "12"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.565439"
+            timestampString = "578434435.706392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.565496"
+            timestampString = "578434435.707522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.565545"
+            timestampString = "578434435.70762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.565594"
+            timestampString = "578434435.707702"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.565641"
+            timestampString = "578434435.707786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.565688"
+            timestampString = "578434435.707863"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.565735"
+            timestampString = "578434435.707938"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMCommand.swift"
-            timestampString = "578143235.565786"
+            timestampString = "578434435.708021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "405"
-            endingLineNumber = "405"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
             landmarkName = "translate_stack(command:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.566186"
+            timestampString = "578434435.70811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMFile.swift"
-            timestampString = "578143235.56624"
+            timestampString = "578434435.7081929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
@@ -234,12 +234,292 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Compiler/VM/VMCommand.swift"
-            timestampString = "578143235.56629"
+            timestampString = "578434435.7082731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "773"
-            endingLineNumber = "773"
+            startingLineNumber = "760"
+            endingLineNumber = "760"
             landmarkName = "translate_pop(command:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708357"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "translate_operation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "init(line:file:counter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708524"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init(line:file:counter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708609"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "translate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "translate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "translate_operation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.345307"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.3477401"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "358">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.349991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "531">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.352374"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "704">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.354808"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "877">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.356923"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "1050">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.359007"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "1223">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.361451"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "1396">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.36333"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "1569">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Compiler.VMCommand.(translate_operation in _998FF3BF6AA3A951873D142FA4DA2CA6)() -&gt; Swift.String"
+                  moduleName = "Compiler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift"
+                  timestampString = "578147112.365532"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "1742">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708864"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "715"
+            endingLineNumber = "715"
+            landmarkName = "translate_function(command:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Compiler/VM/VMCommand.swift"
+            timestampString = "578434435.708949"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "717"
+            endingLineNumber = "717"
+            landmarkName = "translate_function(command:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
