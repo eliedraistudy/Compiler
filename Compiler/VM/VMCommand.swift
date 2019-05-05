@@ -56,7 +56,7 @@ class VMCommand{
             command.remove(at: range)
         }
         
-        var translated_command: String = "//\(command)\n"
+        var translated_command: String = "\n// VM command: \(command)\n"
         let list = command.split(separator: " ")
         
         switch(list.count) {
@@ -514,20 +514,7 @@ class VMCommand{
             return str
             
         case Segment.Static.rawValue:
-            //  static to do
-            str = "@\(fileName).\(arg)\n"
-            /*
-            //  python
-            str += "D=M\n"
-            str += "@SP\n"
-            str += "A=M\n"
-            str += "M=D\n"
-            str += "D=A+1\n"
-            str += "@SP\n"
-            str += "M=D\n"
-            */
             
-            //  raph
             str += "@\(fileName).\(arg)\n"
             str += "D=M\n"
             str += pushD()
@@ -568,7 +555,8 @@ class VMCommand{
     private func translate_call(command: [Substring]) -> String {
         //  call g n
         
-        let label = "label_" + String(count)
+        let numArgs = Int(command[2])!
+        let label = "ReturnAddress" + String(count)
         
         
         
@@ -577,61 +565,43 @@ class VMCommand{
         
         //  push return address
         let push_return_address = "push constant \(label)".split(separator: " ")
+        
         str += translate_push(command: push_return_address)
         
         //  push LCL
+        str += "    //  save LCL\n"
         str += store_segment_pointer(segmentPointer: "LCL")
         
         //  push ARG
+        str += "    //  save ARG\n"
         str += store_segment_pointer(segmentPointer: "ARG")
         
         //  push THIS
+        str += "    //  save THIS\n"
         str += store_segment_pointer(segmentPointer: "THIS")
         
         //  push THAT
+        str += "    //  save THAT\n"
         str += store_segment_pointer(segmentPointer: "THAT")
         
-        
-        //  arguments
-        let argn = Int(String(command[2]))!
-        str += "@\(argn)\n"
-        str += "D=A\n"
-        str += "@5\n"
-        str += "D=D+A\n"
+        // ARG = SP-n-5
+        str += "    //  ARG = SP-n-5\n"
         str += "@SP\n"
-        str += "D=M-D\n"
+        str += "D=M\n"
+        str += "@\(numArgs + 5)\n"
+        str += "D=D-A\n"
         str += "@ARG\n"
         str += "M=D\n"
-        
-        //  LCL = SP
+
+        // LCL = SP
+        str += "    //  LCL = SP\n"
         str += "@SP\n"
         str += "D=M\n"
         str += "@LCL\n"
         str += "M=D\n"
-        
-        //  goto
         str += "@\(command[1])\n"
-        str += "1;JMP\n"
-        str += "(\(label))\n"
-        
-//        //  ARG = SP-n-5
-//        str += "@SP\n"
-//        str += "D=M\n"
-//        let newARG = Int(String(command[2]))!-5
-//        str += "@\(newARG)\n" // = n-5
-//        str += "D=D-A\n"
-//        str += "@ARG\n"
-//        str += "M=D\n"
-//
-//        //  LCL = SP
-//        str += "@SP\n"
-//        str += "D=M\n"
-//        str += "@LCL\n"
-//        str += "M=D\n"
-//
-//        //  goto g
-//        str += "@\(command[1])\n"
-//        str += "0;JMP\n"
+        str += "0;JMP\n"
+        str += "(\(label))"
         
         
         return str
@@ -644,18 +614,24 @@ class VMCommand{
         var str = ""
         
         //  FRAME = LCL
+        str += "    //  FRAME = LCL\n"
         str += "@LCL\n"
         str += "D=M\n"
+        str += "@R13\n"
+        str += "M=D\n"
         
         //  RET = *(FRAME-5)
         //  RAM[13] = (LOCAL-5)
+        str += "    //  RET = *(FRAME-5)\n"
+        str += "    //  RAM[14] = (LOCAL-5)\n"
         str += "@5\n"
         str += "A=D-A\n"
         str += "D=M\n"
-        str += "@13\n"
+        str += "@R14\n"
         str += "M=D\n"
         
         //  *ARG = pop()
+        str += "    //  *ARG = pop()\n"
         str += "@SP\n"
         str += "M=M-1\n"
         str += "A=M\n"
@@ -666,13 +642,15 @@ class VMCommand{
         
         
         //  SP = ARG + 1
+        str += "    // SP = ARG + 1\n"
         str += "@ARG\n"
         str += "D=M\n"
         str += "@SP\n"
         str += "M=D+1\n"
         
         // THAT = *(FRAME-1)
-        str += "@LCL\n"
+        str += "    // THAT = *(FRAME-1)\n"
+        str += "@R13\n"
         str += "M=M-1\n"
         str += "A=M\n"
         str += "D=M\n"
@@ -680,7 +658,8 @@ class VMCommand{
         str += "M=D\n"
         
         //  THIS = *(FRAME-2)
-        str += "@LCL\n"
+        str += "    //  THIS = *(FRAME-2)\n"
+        str += "@R13\n"
         str += "M=M-1\n"
         str += "A=M\n"
         str += "D=M\n"
@@ -688,7 +667,8 @@ class VMCommand{
         str += "M=D\n"
         
         //  ARG = *(FRAME-3)
-        str += "@LCL\n"
+        str += "    //  ARG = *(FRAME-3)\n"
+        str += "@R13\n"
         str += "M=M-1\n"
         str += "A=M\n"
         str += "D=M\n"
@@ -696,7 +676,8 @@ class VMCommand{
         str += "M=D\n"
         
         //  LCL = *(FRAME-4)
-        str += "@LCL\n"
+        str += "    //  LCL = *(FRAME-4)\n"
+        str += "@R13\n"
         str += "M=M-1\n"
         str += "A=M\n"
         str += "D=M\n"
@@ -704,7 +685,7 @@ class VMCommand{
         str += "M=D\n"
         
         //  goto RET
-        str += "@13\n"
+        str += "@R14\n"
         str += "A=M\n"
         str += "0;JMP\n"
         
@@ -820,25 +801,13 @@ class VMCommand{
             
         case Segment.Static.rawValue:
             //  case static
-            str = "@\(fileName).\(arg)\n"
-            /*
-            //  python
-            str += "D=M\n"
-            str += "@R13\n"
-            str += "M=D\n"
-            str += "@SP\n"
+            str = "@SP\n"
             str += "A=M-1\n"
             str += "D=M\n"
-            str += "@R13\n"
-            str += "A=M\n"
-            str += "M=D\n"
-            */
-            //  raph
-            str += popD()
-            str += "@\(fileName).\(arg)\n"
-            str += "M=D\n"
             str += "@SP\n"
             str += "M=M-1\n"
+            str += "@\(fileName).\(arg)\n"
+            str += "M=D\n"
             
             
             return str

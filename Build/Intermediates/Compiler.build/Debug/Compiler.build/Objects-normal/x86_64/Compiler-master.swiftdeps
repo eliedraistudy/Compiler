@@ -1,11 +1,12 @@
 version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
 options: "b2c404f707bf5827aed63e4bc8444b25"
-build_time: [1556741609, 852408000]
+build_time: [1557032781, 734336000]
 inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1556440931, 805469648]
-  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise2/ex2.swift": [1556741608, 515103086]
+  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise2/ex2.swift": [1557032781, 650980546]
   "/Users/cyberoot/Documents/Compiler/Compiler/StringProtocolExtension.swift": [1556441901, 307564596]
   "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMFile.swift": [1556448183, 552747186]
+  "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMDirectory.swift": [1557032637, 769638212]
   "/Users/cyberoot/Documents/Compiler/Compiler/VM/Enum.swift": [1556435412, 732957076]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise1/ex1.swift": [1556440191, 106343298]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise3/ex3.swift": [1556435412, 730949062]
@@ -13,5 +14,5 @@ inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/ex5.swift": [1556435412, 731512306]
   "/Users/cyberoot/Documents/Compiler/Compiler/file.swift": [1556435412, 731984716]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise0/ex0.swift": [1556440456, 301908277]
-  "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1556740074, 520535520]
+  "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1557005640, 311663227]
   "/Users/cyberoot/Documents/Compiler/Test/test.swift": [1556435412, 758988130]
