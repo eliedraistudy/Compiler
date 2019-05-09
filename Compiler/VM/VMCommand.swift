@@ -450,8 +450,6 @@ class VMCommand{
         //  push [seg] [arg]
         var str: String = ""
         let arg = command[2]
-        var key: String
-        var base: Int
         let seg = String(command[1])
         
         
@@ -703,7 +701,7 @@ class VMCommand{
         //  init local variables
         let k = Int(String(command[2]))!
         if k != 0 {
-            for i in 0...k {
+            for _ in 0...k {
                 let push_constant_0 = "push constant 0".split(separator: " ")
                 str += translate_push(command: push_constant_0)
             }
@@ -717,8 +715,6 @@ class VMCommand{
     private func translate_pop(command: [Substring]) -> String{
         var str = ""
         let arg = command[2]
-        var key: String
-        var base: Int
         let seg = String(command[1])
         
         //  popD

@@ -10,8 +10,14 @@
 		11129F4D22495A7600EE3D4F /* VMCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4C22495A7600EE3D4F /* VMCommand.swift */; };
 		11129F4F22495C9A00EE3D4F /* VMFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4E22495C9A00EE3D4F /* VMFile.swift */; };
 		1130CF06227E2478004B208A /* VMDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1130CF05227E2478004B208A /* VMDirectory.swift */; };
+		11A298FE227F2CA800C6DFE6 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A298FD227F2CA800C6DFE6 /* Tokenizer.swift */; };
+		11A29900227F2CBB00C6DFE6 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A298FF227F2CBB00C6DFE6 /* Tokens.swift */; };
+		11A29902227F2CDB00C6DFE6 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A29901227F2CDB00C6DFE6 /* Parser.swift */; };
 		11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BE6222D179D00530FE8 /* ex0.swift */; };
 		11B38A222275A2A90093FE93 /* StringProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B38A212275A2A90093FE93 /* StringProtocolExtension.swift */; };
+		11C5FFB42282CB55009DC079 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C5FFB32282CB55009DC079 /* Token.swift */; };
+		11C5FFB62282EB3C009DC079 /* SyntaxError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C5FFB52282EB3C009DC079 /* SyntaxError.swift */; };
+		11C5FFB8228343DF009DC079 /* JACKFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C5FFB7228343DF009DC079 /* JACKFile.swift */; };
 		11CF582C2247A2FD00DA4D82 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF582B2247A2FD00DA4D82 /* Enum.swift */; };
 		11F65BD7222C508700530FE8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BD6222C508700530FE8 /* main.swift */; };
 		11F65BDF222D128F00530FE8 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BDE222D128F00530FE8 /* test.swift */; };
@@ -39,7 +45,13 @@
 		11129F4C22495A7600EE3D4F /* VMCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCommand.swift; sourceTree = "<group>"; };
 		11129F4E22495C9A00EE3D4F /* VMFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMFile.swift; sourceTree = "<group>"; };
 		1130CF05227E2478004B208A /* VMDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMDirectory.swift; sourceTree = "<group>"; };
+		11A298FD227F2CA800C6DFE6 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Tokenizer.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		11A298FF227F2CBB00C6DFE6 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		11A29901227F2CDB00C6DFE6 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		11B38A212275A2A90093FE93 /* StringProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocolExtension.swift; sourceTree = "<group>"; };
+		11C5FFB32282CB55009DC079 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		11C5FFB52282EB3C009DC079 /* SyntaxError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxError.swift; sourceTree = "<group>"; };
+		11C5FFB7228343DF009DC079 /* JACKFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JACKFile.swift; sourceTree = "<group>"; };
 		11CF582B2247A2FD00DA4D82 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		11F65BD3222C508700530FE8 /* Compiler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Compiler; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F65BD6222C508700530FE8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -75,6 +87,19 @@
 			path = VM;
 			sourceTree = "<group>";
 		};
+		11A298FC227F2C8E00C6DFE6 /* JACK */ = {
+			isa = PBXGroup;
+			children = (
+				11A298FD227F2CA800C6DFE6 /* Tokenizer.swift */,
+				11A298FF227F2CBB00C6DFE6 /* Tokens.swift */,
+				11A29901227F2CDB00C6DFE6 /* Parser.swift */,
+				11C5FFB32282CB55009DC079 /* Token.swift */,
+				11C5FFB52282EB3C009DC079 /* SyntaxError.swift */,
+				11C5FFB7228343DF009DC079 /* JACKFile.swift */,
+			);
+			path = JACK;
+			sourceTree = "<group>";
+		};
 		11F65BCA222C508700530FE8 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +120,7 @@
 		11F65BD5222C508700530FE8 /* Compiler */ = {
 			isa = PBXGroup;
 			children = (
+				11A298FC227F2C8E00C6DFE6 /* JACK */,
 				11129F50224960B900EE3D4F /* VM */,
 				11F65BE5222D177700530FE8 /* Exercise5 */,
 				11F65BE4222D176D00530FE8 /* Exercise4 */,
@@ -225,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11F65BD7222C508700530FE8 /* main.swift in Sources */,
+				11A298FE227F2CA800C6DFE6 /* Tokenizer.swift in Sources */,
 				11F65BEB222D1D0600530FE8 /* ex2.swift in Sources */,
 				11B38A222275A2A90093FE93 /* StringProtocolExtension.swift in Sources */,
 				11129F4F22495C9A00EE3D4F /* VMFile.swift in Sources */,
@@ -232,12 +259,17 @@
 				11CF582C2247A2FD00DA4D82 /* Enum.swift in Sources */,
 				11F65BE9222D1CFB00530FE8 /* ex1.swift in Sources */,
 				11F65BED222D1D0F00530FE8 /* ex3.swift in Sources */,
+				11C5FFB42282CB55009DC079 /* Token.swift in Sources */,
 				11F65BEF222D1D1800530FE8 /* ex4.swift in Sources */,
 				11F65BF1222D1D2000530FE8 /* ex5.swift in Sources */,
+				11A29900227F2CBB00C6DFE6 /* Tokens.swift in Sources */,
 				11F65BF5222DC82F00530FE8 /* file.swift in Sources */,
+				11C5FFB8228343DF009DC079 /* JACKFile.swift in Sources */,
 				11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */,
 				11129F4D22495A7600EE3D4F /* VMCommand.swift in Sources */,
+				11A29902227F2CDB00C6DFE6 /* Parser.swift in Sources */,
 				11F65BDF222D128F00530FE8 /* test.swift in Sources */,
+				11C5FFB62282EB3C009DC079 /* SyntaxError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

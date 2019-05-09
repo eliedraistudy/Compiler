@@ -16,6 +16,7 @@ depends-top-level:
 - !private "FileManager"
 - !private "NSString"
 - "String"
+- !private "StringLiteralType"
 - "URL"
 - !private "UTF8"
 - !private "UnicodeScalarType"

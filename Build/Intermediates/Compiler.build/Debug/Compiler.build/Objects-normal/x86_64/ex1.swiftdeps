@@ -8,7 +8,6 @@ provides-dynamic-lookup:
 depends-top-level:
 - !private "+"
 - !private "FileManager"
-- !private "StringLiteralType"
 - !private "URL"
 - "compute_exercise1"
 - "ex1_introduction"

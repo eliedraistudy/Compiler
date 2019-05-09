@@ -1,45 +1,11 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
-- "get_files_list"
-- "write_to_file"
 provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
-- !private "FileManager"
-- "String"
-- "get_files_list"
-- !private "print"
-- "write_to_file"
 depends-member:
-- !private ["s7CVarArgP", "contentsOfDirectory"]
-- !private ["s7CVarArgP", "default"]
-- !private ["s28CustomDebugStringConvertibleP", "contentsOfDirectory"]
-- !private ["s28CustomDebugStringConvertibleP", "default"]
-- !private ["s23CustomStringConvertibleP", "contentsOfDirectory"]
-- !private ["s23CustomStringConvertibleP", "default"]
-- !private ["SQ", "contentsOfDirectory"]
-- !private ["SQ", "default"]
-- !private ["So13NSFileManagerC", "contentsOfDirectory"]
-- !private ["So13NSFileManagerC", "default"]
-- !private ["SH", "contentsOfDirectory"]
-- !private ["SH", "default"]
-- !private ["So8NSObjectC", "contentsOfDirectory"]
-- !private ["So8NSObjectC", "default"]
-- !private ["So8NSObjectP", "contentsOfDirectory"]
-- !private ["So8NSObjectP", "default"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "contentsOfDirectory"]
-- !private ["10Foundation27_KeyValueCodingAndObservingP", "default"]
 depends-nominal:
-- !private "s7CVarArgP"
-- !private "s28CustomDebugStringConvertibleP"
-- !private "s23CustomStringConvertibleP"
-- !private "SQ"
-- !private "So13NSFileManagerC"
-- !private "SH"
-- !private "So8NSObjectC"
-- !private "So8NSObjectP"
-- !private "10Foundation27_KeyValueCodingAndObservingP"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
@@ -59,4 +25,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "90155a9ed661de87b418d8d445bc06de"
+interface-hash: "5bf39d8b5f0094ca83c744a0da4fb204"
