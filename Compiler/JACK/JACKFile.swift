@@ -19,22 +19,22 @@ class JACKFile{
         inputFile = input
         
     //  get file name
-        var name = inputFile.deletingPathExtension().lastPathComponent
+        let name = inputFile.deletingPathExtension().lastPathComponent
         outputFileTokenizer =
             inputFile.deletingLastPathComponent().appendingPathComponent(name + "T").appendingPathExtension("xml")
         outputFileXML = inputFile.deletingPathExtension().appendingPathExtension("xml")
     }
     
     func compile(){
-        var inpF = File(filePath: inputFile.path)
-        var read = inpF.read()
+        let inpF = File(filePath: inputFile.path)
+        let read = inpF.read()
         
         //  tokenizer
-        var tknzr = Tokenizer(input: read)
+        let tknzr = Tokenizer(input: read)
         tknzr.Tokenize()
         
         //  output for tokenizer
-        var outTknzr = File(filePath: outputFileTokenizer.path)
+        let outTknzr = File(filePath: outputFileTokenizer.path)
         for token in tknzr.Tokens() {
             outTknzr.write(sentence: token.ToString())
         }
