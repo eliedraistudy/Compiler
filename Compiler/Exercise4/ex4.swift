@@ -10,7 +10,7 @@ import Foundation
 
 func ex4_translate_all_files(directory: URL){
     
-    var files_list =
+    let files_list =
         get_all_files(
             from: directory)
     
