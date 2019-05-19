@@ -10,16 +10,16 @@ import Foundation
 
 class Token{
     
-    var content: String
-    var classification: Classification
+    var value: String
+    var type: TokenType
     
-    init(val : String, clss: Classification){
-        content = val
-        classification = clss
+    init(val : String, typ: TokenType){
+        value = val
+        type = typ
     }
     
     func ToXML() -> XMLElement{
-        let root = XMLElement(name: classification.rawValue, stringValue: content)
+        let root = XMLElement(name: type.rawValue, stringValue: value)
         return root
     }
     

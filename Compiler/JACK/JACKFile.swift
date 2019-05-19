@@ -30,7 +30,7 @@ class JACKFile{
         let read = inpF.read()
         
         //  tokenizer
-        let tknzr = Tokenizer(input: read)
+        let tknzr = Tokenizer(read: read)
         tknzr.Tokenize()
         
         //  output for tokenizer

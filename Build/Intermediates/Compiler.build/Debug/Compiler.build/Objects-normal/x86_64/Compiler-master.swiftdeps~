@@ -1,9 +1,9 @@
 version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
 options: "b2c404f707bf5827aed63e4bc8444b25"
-build_time: [1557336210, 766654000]
+build_time: [1558086619, 652763000]
 inputs:
-  "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1557335958, 297263615]
-  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Tokenizer.swift": [1557321524, 443075780]
+  "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1557336234, 558483225]
+  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Tokenizer.swift": [1557399729, 230267425]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise2/ex2.swift": [1557032781, 650980546]
   "/Users/cyberoot/Documents/Compiler/Compiler/StringProtocolExtension.swift": [1556441901, 307564596]
   "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMFile.swift": [1556448183, 552747186]
@@ -12,11 +12,11 @@ inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise1/ex1.swift": [1556440191, 106343298]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise3/ex3.swift": [1556435412, 730949062]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Token.swift": [1557336093, 974997100]
-  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise4/ex4.swift": !private [1557336207, 270142583]
+  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise4/ex4.swift": [1557400735, 136114639]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/ex5.swift": [1556435412, 731512306]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Tokens.swift": [1557313985, 552508348]
   "/Users/cyberoot/Documents/Compiler/Compiler/file.swift": [1556435412, 731984716]
-  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/JACKFile.swift": [1557336077, 366977184]
+  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/JACKFile.swift": [1557410412, 402693482]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise0/ex0.swift": [1556440456, 301908277]
   "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1557310251, 481799128]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Parser.swift": [1557067098, 764876139]

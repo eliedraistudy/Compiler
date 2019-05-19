@@ -8,11 +8,10 @@
 
 import Foundation
 
-enum Classification:
+enum TokenType:
 String{
     case KEYWORD = "keyword"
     case SYMBOL = "symbol"
-    case KEYWORDCONSTANT = "keywordconstant"
     case INTEGERCONSTANT = "intConst"
     case STRINGCONSTANT = "stringConst"
     case IDENTIFIER = "identifier"
@@ -39,7 +38,11 @@ let KEYWORD:[String] = [
     "if",
     "else",
     "while",
-    "return"]
+    "return",
+    "true",
+    "false",
+    "null",
+    "this"]
 
 let KEYWORDCONSTANT:[String] = [
     "true",

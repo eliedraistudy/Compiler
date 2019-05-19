@@ -8,134 +8,163 @@
 
 import Foundation
 
-
 class Tokenizer{
-    
-    var inputString: String
+    var input: Array<String.Element>
     var index = 0
     var currentToken: Token?
     var tokens: [Token] = []
-    var inputChar: Array<String.Element> = Array<String.Element>()
     
-    init(input: String) {
-        inputString = input
-        inputString = inputString.replacingOccurrences(of: "", with: "")
-        //inputString = inputString.replacingOccurrences(of: "\n", with: "")
+    init(read: String){
+        input = Array(read);
     }
     
-    func Tokenize(){
+    func Tokenize() -> [Token]{
         
-        inputChar = Array(inputString)
-        let size = inputChar.count
-        
-        while(index<size){
-            getToken()
-            if(currentToken == nil){
-                print("Error getting the token")
-                break
+        while( !EOF() ){ // iterate over all the characters
+            
+            //  first check line commentary case
+            if( currentCharacter() == "/"
+                && index + 1 < input.count
+                && nextCharacter() == "/"  ){
+                passLineCommentary();
             }
-            else{
-                tokens.append(currentToken!)
+            
+            //  check multiple line commentary
+            else if( currentCharacter() == "/"
+                && index + 1 < input.count
+                && nextCharacter() == "*" ){
+                passMultipleLineCommentary();
+            }
+            
+            //  pass new line characters
+            else if( currentCharacter() == "\n" || currentCharacter() == "\r"){
+                advance();
+            }
+                
+            else if( currentCharacter() == " " || currentCharacter() == "\t"){
+                advance(); // pass space character
+            }
+            
+            else{ // here create the tokens
+                
+                //  check if the current character is a number
+                if( currentCharacter().isNumber ){
+                    getIntegerConstant();
+                }
+                
+                //  get string constant
+                else if( currentCharacter() == "\"" ){
+                    getStringConstant();
+                }
+                
+                else if( SYMBOL.contains( String( currentCharacter() ) )
+                    || OP.contains( String(currentCharacter()) )
+                    || UNARYOP.contains( String( currentCharacter() ) ) ){
+                    getSymbol();
+                }
+                
+                else if( currentCharacter().isLetter || currentCharacter() == "_"){
+                    getWord();
+                }
+                
             }
         }
-    }
-    
-    func Tokens() -> [Token]{
         return tokens
     }
     
-    private func CurrentChar() -> String{
-        if(EOF()) {
-            return ""
-        }
-        return String(inputChar[index])
-    }
-    
-    private func getToken(){
-        
-        if( SYMBOL.contains(CurrentChar())
-            || OP.contains(CurrentChar())
-            || UNARYOP.contains(CurrentChar()) ){
-            getSymbol()
+    private func getWord(){
+        var word = "";
+        while( !EOF()
+            && currentCharacter() != " "
+            && (currentCharacter().isLetter || currentCharacter() == "_") ){
+                word += String( currentCharacter() );
+                advance();
         }
         
-        else if( CurrentChar() == "\"" ){
-            getStringConst()
+        //advance();
+        if( KEYWORD.contains(word) ){
+            tokens.append( Token(val: word, typ: TokenType.KEYWORD) );
         }
-        else if( DIGIT.contains(CurrentChar()) ){
-            getIntConst()
+        else {
+            tokens.append( Token(val: word, typ: TokenType.IDENTIFIER) );
         }
-        else{
-            getString()
-        }
-    }
-    
-    
-    private func getStringConst(){
-        
-        var value = ""
-        
-        repeat{
-            if(!advance()){
-                SyntaxError(error: "Cannot get the end of string at position \(index)")
-                break
-            }
-            value += CurrentChar()
-        } while(CurrentChar() != "\"")
-        value.removeLast(1) // remove the last quote
-        currentToken = Token.init(val: value, clss: Classification.STRINGCONSTANT)
-        advance()
-    }
-    
-    private func getIntConst(){
-        var value = ""
-        
-        repeat{
-            value += CurrentChar()
-            advance()
-        }while(DIGIT.contains(CurrentChar()) || EOF())
-        currentToken = Token.init(val: value, clss: Classification.INTEGERCONSTANT)
-        
     }
     
     private func getSymbol(){
-        var value = ""
-        switch (CurrentChar()) {
-        case ">": value  = "&lt;"
-        case "<": value = "&gt;"
-        case "&": value = "&amp;"
-        default: value = CurrentChar()
-        }
-        currentToken = Token.init(val: value, clss: Classification.SYMBOL)
-        advance()
+        let symbol = String( currentCharacter() );
+        advance();
+        tokens.append( Token(val: symbol, typ: TokenType.SYMBOL) );
     }
     
-    private func getString(){
-        var value = ""
-        while( LETTER.contains( CurrentChar() ) || EOF() || CurrentChar() == "_" ){
-            value += CurrentChar()
-            advance()
+    
+    private func getIntegerConstant(){
+        var number = "";
+        
+        while( !EOF() && currentCharacter().isNumber ){
+            number += String( currentCharacter() );
+            advance();
         }
         
-        var classification: Classification
-        if(KEYWORD.contains(value)){
-            classification = Classification.KEYWORD
+        //advance();
+        tokens.append( Token(val: number, typ: TokenType.INTEGERCONSTANT) );
+    }
+    
+    private func getStringConstant(){
+        var str = "";
+        advance()
+        while( !EOF() && currentCharacter() != "\""  && currentCharacter() != "\n" ){
+            str += String( currentCharacter() );
+            advance();
         }
-        else if(KEYWORDCONSTANT.contains(value)){
-            classification = Classification.KEYWORDCONSTANT
+        
+        if( EOF() || currentCharacter() == "\n"){
+            print("Syntax Error: end of string not found");
         }
         else{
-            classification = Classification.IDENTIFIER
+            advance(); // pass the end '\"' character
+            tokens.append( Token(val: str, typ: TokenType.STRINGCONSTANT) );
         }
-        currentToken = Token.init(val: value, clss: classification)
     }
     
-    private func advance() -> Bool{
-        index += 1
-        return EOF()
+    private func EOF() -> Bool{
+        return index >= input.count;
     }
     
-    private func EOF() -> Bool {
-        return index >= inputChar.count
+    private func currentCharacter() -> String.Element {
+        return input[index];
     }
+    
+    private func nextCharacter() -> String.Element {
+        return input[index+1];
+    }
+    
+    private func advance(){
+        index += 1;
+    }
+    
+    
+    private func passLineCommentary(){
+        while( !EOF() && input[index] != "\n" && input[index] != "\r" ){
+            advance();
+        }
+        advance();
+    }
+    
+    private func passMultipleLineCommentary(){
+        while( !EOF() ){
+            if( currentCharacter() == "*"
+                && index+1 < input.count
+                && nextCharacter() == "/" ){
+                advance(); // input[index] == "/"
+                advance(); // input[index] == next token
+                break;
+            }
+            advance();
+        }
+    }
+    
+    
+    
 }
+
+
