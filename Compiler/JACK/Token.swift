@@ -24,7 +24,9 @@ class Token{
     }
     
     func ToString() -> String {
-        return ToXML().xmlString
+        
+        return "<\(type.rawValue)> \(value) </\(type.rawValue)>";
+        //return ToXML().xmlString
     }
 }
 

@@ -12,8 +12,8 @@ enum TokenType:
 String{
     case KEYWORD = "keyword"
     case SYMBOL = "symbol"
-    case INTEGERCONSTANT = "intConst"
-    case STRINGCONSTANT = "stringConst"
+    case INTEGERCONSTANT = "integerConstant"
+    case STRINGCONSTANT = "stringConstant"
     case IDENTIFIER = "identifier"
 }
 

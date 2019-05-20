@@ -37,7 +37,9 @@ class Tokenizer{
             }
             
             //  pass new line characters
-            else if( currentCharacter() == "\n" || currentCharacter() == "\r"){
+            else if( currentCharacter() == "\n"
+                || currentCharacter() == "\r"
+                || currentCharacter() == "\r\n"){
                 advance();
             }
                 
@@ -91,7 +93,12 @@ class Tokenizer{
     }
     
     private func getSymbol(){
-        let symbol = String( currentCharacter() );
+        
+        
+        var symbol = String( currentCharacter() );
+        if(symbol == "<"){ symbol = "&lt;"; }
+        if(symbol == ">"){ symbol = "&gt;"; }
+        if(symbol == "&"){ symbol = "&amp;"; }
         advance();
         tokens.append( Token(val: symbol, typ: TokenType.SYMBOL) );
     }
@@ -144,7 +151,10 @@ class Tokenizer{
     
     
     private func passLineCommentary(){
-        while( !EOF() && input[index] != "\n" && input[index] != "\r" ){
+        while( !EOF()
+            && currentCharacter() != "\n"
+            && currentCharacter() != "\r"
+            && currentCharacter() != "\r\n"){
             advance();
         }
         advance();
