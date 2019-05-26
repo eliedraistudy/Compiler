@@ -18,7 +18,6 @@ depends-top-level:
 - "String"
 - "URL"
 - !private "UTF8"
-- !private "UnicodeScalarType"
 - !private "print"
 depends-member:
 - !private ["SK", "Encoding"]

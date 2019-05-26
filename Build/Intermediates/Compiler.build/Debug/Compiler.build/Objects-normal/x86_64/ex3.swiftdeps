@@ -6,7 +6,6 @@ provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
-- !private "StringLiteralType"
 - "compute_exercise3"
 - "ex3_introduction"
 - !private "print"

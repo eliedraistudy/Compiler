@@ -18,7 +18,7 @@ class JACKFile{
     init(input: URL){
         inputFile = input
         
-    //  get file name
+        //  get file name
         let name = inputFile.deletingPathExtension().lastPathComponent
         outputFileTokenizer =
             inputFile.deletingLastPathComponent().appendingPathComponent(name + "T").appendingPathExtension("xml")
@@ -40,5 +40,12 @@ class JACKFile{
             outTknzr.write(sentence: token.ToString())
         }
         outTknzr.write(sentence: "</tokens>")
+        
+        //  output for parser
+        let outParse = File.create(filePath: outputFileXML.path);
+        let parser = Parser(tokensToParse: tokens);
+        let docXML = parser.Parse()
+        outParse.write(sentence: "\(docXML)");
+        
     }
 }
