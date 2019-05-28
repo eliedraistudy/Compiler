@@ -2,8 +2,8 @@
 //  Parser.swift
 //  Compiler
 //
-//  Created by Elie Drai on 05/05/2019.
-//  Copyright © 2019 Elie Drai. All rights reserved.
+//  Created by Gabriel Elbaz on 05/05/2019.
+//  Copyright © 2019 Gabriel Elbaz. All rights reserved.
 //
 
 import Foundation
@@ -129,7 +129,6 @@ class Parser
         let allowedTypes = ["int", "char", "boolean"]
         
         if ( (tokenToCheck.type == TokenType.KEYWORD && allowedTypes.contains(tokenToCheck.value)) || tokenToCheck.type == .IDENTIFIER) {
-            
             return true
         }
         
@@ -138,10 +137,13 @@ class Parser
     
     private func isNextExpression() -> Bool
     {
-        if isNext(typesToCheck: [.SYMBOL, .INTEGERCONSTANT, .STRINGCONSTANT, .KEYWORD, .IDENTIFIER]) {
+        if isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["true", "false", "null", "this"]) {
             return true
-        }
-        else {
+        } else if isNext(typesToCheck: [.INTEGERCONSTANT, .STRINGCONSTANT, .IDENTIFIER]) {
+            return true
+        } else if isNext(typesToCheck: [.SYMBOL], valuesToCheck: UNARYOP + ["("]) {
+            return true
+        } else {
             return false
         }
     }
@@ -156,6 +158,15 @@ class Parser
     private func addToFather(tokensToAdd: [Token], fatherXML: XMLElement)
     {
         for i in 0...tokensToAdd.count - 1 {
+            
+            if tokensToAdd[i].value == "&lt;" {
+                tokensToAdd[i].value = "<"
+            } else if tokensToAdd[i].value == "&gt;" {
+                tokensToAdd[i].value = ">"
+            } else if tokensToAdd[i].value == "&amp;" {
+                tokensToAdd[i].value = "&"
+            }
+            
             fatherXML.addChild(XMLElement(name: tokensToAdd[i].type.rawValue, stringValue: tokensToAdd[i].value))
         }
     }
@@ -176,7 +187,6 @@ class Parser
         
         // -> className '{'
         let nextTokens = [checkNextToken(typesToCheck: [.IDENTIFIER]), checkNextToken(typesToCheck: [.SYMBOL])]
-        
         addToFather(tokensToAdd: nextTokens, fatherXML: XMLClass)
         
         // -> classVarDec* subroutineDec* //
@@ -193,22 +203,21 @@ class Parser
     private func parseClassVarDec(root: XMLElement)
     {
         while (isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["static", "field"])) {
-            // -> ('static', 'field')
-            let tokenClassVar = checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["static", "field"])
             
             // <classVarDec>
             let XMLClassVarDec = XMLElement(name: TokenType.CLASSVARDEC.rawValue)
             root.addChild(XMLClassVarDec)
             
-            addToFather(tokensToAdd: [tokenClassVar], fatherXML: XMLClassVarDec)
-            
-            let nextTokens = [checkNextTokenType(typesToCheck: ["int", "char", "boolean"]), checkNextToken(typesToCheck: [.IDENTIFIER])]
-            
-            addToFather(tokensToAdd: nextTokens, fatherXML: XMLClassVarDec)
+            // -> ('static', 'field')
+            let tokenClassVar = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["static", "field"]),
+                                 checkNextTokenType(typesToCheck: ["int", "char", "boolean"]),
+                                 checkNextToken(typesToCheck: [.IDENTIFIER])]
+            addToFather(tokensToAdd: tokenClassVar, fatherXML: XMLClassVarDec)
             
             // -> (',' varName)*
             while (isNext(typesToCheck: [.SYMBOL], valuesToCheck: [","])) {
-                let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL]), checkNextToken(typesToCheck: [.IDENTIFIER])]
+                let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL]),
+                                  checkNextToken(typesToCheck: [.IDENTIFIER])]
                 addToFather(tokensToAdd: nextTokens, fatherXML: XMLClassVarDec)
             }
             
@@ -218,24 +227,22 @@ class Parser
         }
     }
     
-    private func parseType()
-    {
-        
-    }
-    
     private func parseSubroutineDec(root: XMLElement)
     {
         while (isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["constructor", "function", "method"])) {
-            // -> ('constructor', 'function', 'method')
-            let tokenTypeFunc = checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["constructor", "function", "method"]);
             
             // <subroutineDec>
             let XMLSubroutineDec = XMLElement(name: TokenType.SUBROUTINEDEC.rawValue)
             root.addChild(XMLSubroutineDec)
+            
+            // -> ('constructor', 'function', 'method')
+            let tokenTypeFunc = checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["constructor", "function", "method"]);
             addToFather(tokensToAdd: [tokenTypeFunc], fatherXML: XMLSubroutineDec)
             
             // -> ('void', type) subroutineName '('
-            let nextTokens = [checkNextTokenType(typesToCheck: ["void"]), checkNextToken(typesToCheck: [TokenType.IDENTIFIER]), checkNextToken(typesToCheck: [TokenType.SYMBOL], valuesToCheck: ["("])]
+            let nextTokens = [checkNextTokenType(typesToCheck: ["void"]),
+                              checkNextToken(typesToCheck: [TokenType.IDENTIFIER]),
+                              checkNextToken(typesToCheck: [TokenType.SYMBOL], valuesToCheck: ["("])]
             addToFather(tokensToAdd: nextTokens, fatherXML: XMLSubroutineDec)
             
             // -> parameterList
@@ -248,34 +255,31 @@ class Parser
             // -> subroutineBody
             parseSubroutineBody(root: XMLSubroutineDec)
         }
-        
-        
     }
     
     private func parseParameterList(root: XMLElement)
     {
+        // <parameterList>
         let XMLParameterList = XMLElement(name: TokenType.PARAMETERLIST.rawValue)
         root.addChild(XMLParameterList)
+        
+        // used because all the expression appears 0 or 1 time
         if isNextType() {
             
-            // <parameterList>
-            
-            
             // -> (type varName)
-            let nextTokens = [checkNextTokenType(typesToCheck: ["int", "char", "boolean"]), checkNextToken(typesToCheck: [.IDENTIFIER])]
+            let nextTokens = [checkNextTokenType(typesToCheck: ["int", "char", "boolean"]),
+                              checkNextToken(typesToCheck: [.IDENTIFIER])]
             addToFather(tokensToAdd: nextTokens, fatherXML: XMLParameterList)
             
             // -> (',' type varName)
             while (isNext(typesToCheck: [.SYMBOL], valuesToCheck: [","])) {
-                let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [","]), checkNextTokenType(typesToCheck: ["int", "char", "boolean"]), checkNextToken(typesToCheck: [.IDENTIFIER])]
+                
+                let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [","]),
+                                  checkNextTokenType(typesToCheck: ["int", "char", "boolean"]),
+                                  checkNextToken(typesToCheck: [.IDENTIFIER])]
                 addToFather(tokensToAdd: nextTokens, fatherXML: XMLParameterList)
             }
         }
-    }
-    
-    private func parseSubroutineList()
-    {
-        
     }
     
     private func parseSubroutineBody(root: XMLElement)
@@ -290,7 +294,6 @@ class Parser
         
         // (varDec)* statements
         parseVarDec(root: XMLSubroutineBody)
-        
         parseStatements(root: XMLSubroutineBody)
         
         // -> '}'
@@ -301,18 +304,21 @@ class Parser
     private func parseVarDec(root: XMLElement)
     {
         while isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["var"]) {
+            
             // <varDec>
             let XMLVarDec = XMLElement(name: TokenType.VARDEC.rawValue)
             root.addChild(XMLVarDec)
             
             // -> 'var' type varName
-            let nextTokens = [
-                checkNextToken(typesToCheck: [TokenType.KEYWORD], valuesToCheck: ["var"]), checkNextTokenType(typesToCheck: ["int", "char", "boolean"]), checkNextToken(typesToCheck: [TokenType.IDENTIFIER])]
+            let nextTokens = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["var"]),
+                              checkNextTokenType(typesToCheck: ["int", "char", "boolean"]),
+                              checkNextToken(typesToCheck: [.IDENTIFIER])]
             addToFather(tokensToAdd: nextTokens, fatherXML: XMLVarDec)
             
             // -> (',' varName)*
             while (isNext(typesToCheck: [.SYMBOL], valuesToCheck: [","])) {
-                let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [","]), checkNextToken(typesToCheck: [TokenType.IDENTIFIER])]
+                let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [","]),
+                                  checkNextToken(typesToCheck: [TokenType.IDENTIFIER])]
                 addToFather(tokensToAdd: nextTokens, fatherXML: XMLVarDec)
             }
             
@@ -331,10 +337,9 @@ class Parser
         // <statements>
         let XMLStatements = XMLElement(name: TokenType.STATEMENTS.rawValue)
         root.addChild(XMLStatements)
+        
         // -> statements*
         while (isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["let", "if", "while", "do", "return"])) {
-            
-            
             parseStatement(root: XMLStatements)
         }
     }
@@ -361,7 +366,8 @@ class Parser
         root.addChild(XMLLetStatement)
         
         // -> 'let' varName
-        let nextTokens = [checkNextToken(typesToCheck: [TokenType.KEYWORD], valuesToCheck: ["let"]), checkNextToken(typesToCheck: [TokenType.IDENTIFIER])]
+        let nextTokens = [checkNextToken(typesToCheck: [TokenType.KEYWORD], valuesToCheck: ["let"]),
+                          checkNextToken(typesToCheck: [TokenType.IDENTIFIER])]
         addToFather(tokensToAdd: nextTokens, fatherXML: XMLLetStatement)
         
         // -> ( '(', expression, ')' )?
@@ -393,14 +399,16 @@ class Parser
         root.addChild(XMLIfStatement)
         
         // -> 'if' '('
-        var nextTokens = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["if"]), checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])]
+        var nextTokens = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["if"]),
+                          checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])]
         addToFather(tokensToAdd: nextTokens, fatherXML: XMLIfStatement)
         
         // -> expression
         parseExpression(root: XMLIfStatement)
         
         // -> ')' '{'
-        nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [")"]), checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["{"])]
+        nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [")"]),
+                      checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["{"])]
         addToFather(tokensToAdd: nextTokens, fatherXML: XMLIfStatement)
         
         // -> statements
@@ -413,7 +421,8 @@ class Parser
         // ('else' '{' statements '}' )?
         if isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["else"]) {
             
-            nextTokens = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["else"]), checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["{"])]
+            nextTokens = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["else"]),
+                          checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["{"])]
             addToFather(tokensToAdd: nextTokens, fatherXML: XMLIfStatement)
             
             parseStatements(root: XMLIfStatement)
@@ -430,14 +439,16 @@ class Parser
         root.addChild(XMLWhileStatement)
         
         // -> 'while' '('
-        var nextTokens = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["while"]), checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])]
+        var nextTokens = [checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["while"]),
+                          checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])]
         addToFather(tokensToAdd: nextTokens, fatherXML: XMLWhileStatement)
         
         // -> expression
         parseExpression(root: XMLWhileStatement)
         
         // ')' '{'
-        nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [")"]), checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["{"])]
+        nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [")"]),
+                      checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["{"])]
         addToFather(tokensToAdd: nextTokens, fatherXML: XMLWhileStatement)
         
         // statements
@@ -486,7 +497,9 @@ class Parser
         addToFather(tokensToAdd: [tokenSemiColon], fatherXML: XMLReturnStatement)
     }
     
-    // Expressions Functions //
+    // ********************************* //
+    // ***** Expressions Functions ***** //
+    // ********************************* //
     
     private func parseExpression(root: XMLElement)
     {
@@ -499,6 +512,7 @@ class Parser
         
         // -> (op term)*
         while (isNext(typesToCheck: [.SYMBOL], valuesToCheck: OP)) {
+            
             let tokenOp = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: OP)
             addToFather(tokensToAdd: [tokenOp], fatherXML: XMLExpression)
             
@@ -512,59 +526,76 @@ class Parser
         let XMLTerm = XMLElement(name: TokenType.TERM.rawValue)
         root.addChild(XMLTerm)
         
-        // case (integerConst)
-        if isNext(typesToCheck: [.INTEGERCONSTANT]) {
-            let tokenIntCons = checkNextToken(typesToCheck: [.INTEGERCONSTANT])
-            addToFather(tokensToAdd: [tokenIntCons], fatherXML: XMLTerm)
-        }
-        else if isNext(typesToCheck: [.STRINGCONSTANT]){
-            let tokenStrCons = checkNextToken(typesToCheck: [.STRINGCONSTANT])
-            addToFather(tokensToAdd: [tokenStrCons], fatherXML: XMLTerm)
-        }
-        else if isNext(typesToCheck: [.SYMBOL], valuesToCheck: UNARYOP + ["("]){
-            if isNext(typesToCheck: [.SYMBOL], valuesToCheck: UNARYOP){
-                let tokenUnaryOp = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: UNARYOP)
-                addToFather(tokensToAdd: [tokenUnaryOp], fatherXML: XMLTerm)
-                parseTerm(root: XMLTerm);
-            }
-            else {
+        if isNext(typesToCheck: [.INTEGERCONSTANT, .STRINGCONSTANT]) {
+            
+            let tokenConst = checkNextToken(typesToCheck: [.INTEGERCONSTANT, .STRINGCONSTANT])
+            addToFather(tokensToAdd: [tokenConst], fatherXML: XMLTerm)
+            
+        } else if isNext(typesToCheck: [.SYMBOL]) {
+            
+            if isNext(typesToCheck: [.SYMBOL], valuesToCheck: ["("]) {
+                
                 let tokenParOp = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])
                 addToFather(tokensToAdd: [tokenParOp], fatherXML: XMLTerm)
-                parseExpressionList(root: XMLTerm);
+                
+                parseExpression(root: XMLTerm)
+                
                 let tokenParCl = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [")"])
                 addToFather(tokensToAdd: [tokenParCl], fatherXML: XMLTerm)
                 
+            } else if isNext(typesToCheck: [.SYMBOL], valuesToCheck: UNARYOP) {
+                
+                let tokenOp = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: UNARYOP)
+                addToFather(tokensToAdd: [tokenOp], fatherXML: XMLTerm)
+                
+                parseTerm(root: XMLTerm)
+                
             }
-        }
-        else if isNext(typesToCheck: [.IDENTIFIER]) {
             
-            // case subroutineCall
-            if (tokensToParse[1].type == .SYMBOL && tokensToParse[1].value == "(") || (tokensToParse[1].type == .SYMBOL && tokensToParse[1].value == ".") {
-                parseSubroutineCall(root: XMLTerm)
+        } else if isNext(typesToCheck: [.KEYWORD, .IDENTIFIER]) {
+            
+            if isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["true", "false", "null", "this"]) {
+                
+                let tokenKeyConst = checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: ["true", "false", "null", "this"])
+                addToFather(tokensToAdd: [tokenKeyConst], fatherXML: XMLTerm)
+                
+                // cases of varName, varName '[' expression ']', [subroutineName '(', name '.']
             } else {
                 
-                if isNext(typesToCheck: [.KEYWORD], valuesToCheck: KEYWORDCONSTANT){
-                    let tokKeyConst = checkNextToken(typesToCheck: [.KEYWORD], valuesToCheck: KEYWORDCONSTANT)
-                    addToFather(tokensToAdd: [tokKeyConst], fatherXML: XMLTerm)
-                }
-                else{
-                    // case (stringConstant, varName)
-                    var nextTokensId = [checkNextToken(typesToCheck: [.IDENTIFIER])]
-                    // case varName '[' expression ']'
-                    if isNext(typesToCheck: [.SYMBOL], valuesToCheck: ["["]) {
-                        nextTokensId += [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["["])]
-                        parseExpression(root: XMLTerm)
-                        nextTokensId += [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["]"])]
-                    }
-                    addToFather(tokensToAdd: nextTokensId, fatherXML: XMLTerm)
-                }
+                let tokenAfterNext = tokensToParse[1]
                 
+                if tokenAfterNext.type == .SYMBOL &&
+                    (tokenAfterNext.value.elementsEqual("[") ||
+                        tokenAfterNext.value.elementsEqual("(") ||
+                        tokenAfterNext.value.elementsEqual(".")) {
+                    
+                    if tokenAfterNext.value.elementsEqual("[") {
+                        
+                        let nextTokens = [checkNextToken(typesToCheck: [.IDENTIFIER]), checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["["])]
+                        addToFather(tokensToAdd: nextTokens, fatherXML: XMLTerm)
+                        
+                        parseExpression(root: XMLTerm)
+                        
+                        let tokenHoCl = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["]"])
+                        addToFather(tokensToAdd: [tokenHoCl], fatherXML: XMLTerm)
+                        
+                    } else if tokenAfterNext.value.elementsEqual("(") || tokenAfterNext.value.elementsEqual(".")  {
+                        
+                        parseSubroutineCall(root: XMLTerm)
+                        
+                    }
+                    
+                    // varName
+                } else {
+                    
+                    let tokenVarname = checkNextToken(typesToCheck: [.IDENTIFIER])
+                    addToFather(tokensToAdd: [tokenVarname], fatherXML: XMLTerm)
+                    
+                }
                 
             }
             
-            
         }
-        
     }
     
     private func parseSubroutineCall(root: XMLElement)
@@ -586,7 +617,9 @@ class Parser
             // '.' subroutineName '(' expressionList ')'
         } else if isNext(typesToCheck: [.SYMBOL], valuesToCheck: ["."]) {
             
-            let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["."]), checkNextToken(typesToCheck: [.IDENTIFIER]), checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])]
+            let nextTokens = [checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["."]),
+                              checkNextToken(typesToCheck: [.IDENTIFIER]),
+                              checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])]
             addToFather(tokensToAdd: nextTokens, fatherXML: root)
             
             parseExpressionList(root: root)
@@ -608,8 +641,11 @@ class Parser
             
             // (',' expression)*
             while isNext(typesToCheck: [.SYMBOL], valuesToCheck: [","]) {
-                let tokenComma = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [","])
-                addToFather(tokensToAdd: [tokenComma], fatherXML: XMLExpressionList)
+                
+                let tokenColon = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [","])
+                addToFather(tokensToAdd: [tokenColon], fatherXML: XMLExpressionList)
+                
+                parseExpression(root: XMLExpressionList)
             }
         }
     }
