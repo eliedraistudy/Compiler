@@ -30,6 +30,7 @@ String {
     case End_Program = "END_OF_PROGRAM"
 }
 
+
 enum Function:
 String {
     case Function = "function"
