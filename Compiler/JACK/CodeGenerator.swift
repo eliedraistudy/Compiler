@@ -60,6 +60,9 @@ class ClassCodeGenerator{
         output += "//   function definition: \(className).\(subRoutineName) \n"
         output += "function \(className).\(subRoutineName) \(numParameters)\n"
         
+        let statements = subRoutine.elements(forName: "statements")[0]
+        handleStatements(statements)
+        
     }
     
     private func handleSubroutineParameters(_ subroutine: XMLElement) -> Int{
@@ -80,12 +83,59 @@ class ClassCodeGenerator{
                 let type = parameterList[i].objectValue as! String
                 i+=1
                 let id = parameterList[i].objectValue as! String
-                let kind = Kind.Argument
-                subroutineSymbolTable.insert(name: id, type: type, kind: kind)
+                subroutineSymbolTable.insert(name: id, type: type, kind: Kind.Argument)
             }
             i+=1
         }
         
         return count
+    }
+    
+    private func handleLetStatement(_ statement: XMLElement){
+        
+    }
+    
+    private func handleDoStatement(_ statement: XMLElement){
+        
+    }
+    
+    private func handleWhileStatement(_ statement: XMLElement){
+        
+    }
+    
+    private func handleIfStatement(_ statement: XMLElement){
+        
+    }
+    
+    private func handleReturnStatement(_ statement: XMLElement){
+        
+    }
+    
+    private func handleStatements(_ statements: XMLElement){
+        let allStatements = statements.children!
+        
+        for statement in allStatements{
+            let statementName = statement.name
+            switch statementName{
+            case "letStatement":
+                handleLetStatement(statement as! XMLElement)
+                
+            case "doStatement":
+                handleDoStatement(statement as! XMLElement)
+                
+            case "ifStatement":
+                handleIfStatement(statement as! XMLElement)
+                
+            case "whileStatement":
+                handleWhileStatement(statement as! XMLElement)
+                
+            case "returnStatement":
+                handleReturnStatement(statement as! XMLElement)
+                
+            default:
+                output += "ERROR PARSING THE STATEMENT\n"
+            }
+        }
+        
     }
 }
