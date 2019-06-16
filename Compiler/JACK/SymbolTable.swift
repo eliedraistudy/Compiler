@@ -24,7 +24,8 @@ struct Entry{
 }
 
 func getKind(_ str: String) -> Kind{
-    switch str {
+    let theStr = str.trimmingCharacters(in: .whitespaces)
+    switch theStr {
     case Kind.Field.rawValue:
         return Kind.Field
     
@@ -57,11 +58,12 @@ class SymbolTable{
     
     func insert(name: String, type: String, kind: Kind){
         let counter = count(kind: kind)
-        let entry = Entry(name: name, type: type, kind: kind, index: counter)
+        let theName = name.trimmingCharacters(in: .whitespaces)
+        let theType = type.trimmingCharacters(in: .whitespaces)
+        let entry = Entry(name: theName, type: theType, kind: kind, index: counter)
         insertEntry(entry)
     }
     
-   
     
     func reset(){
         symbols.removeAll()

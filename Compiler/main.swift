@@ -62,7 +62,7 @@ func compute(choice: String?){
         
     case "5":
         //compute_exercise5()
-        print("Sorry, not already built")
+        compute_exercise5()
         
     default:
         print("Error in your input, please try another key")

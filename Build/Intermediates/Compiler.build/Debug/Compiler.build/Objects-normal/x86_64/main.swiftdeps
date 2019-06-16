@@ -17,6 +17,7 @@ depends-top-level:
 - !private "compute_exercise1"
 - !private "compute_exercise2"
 - !private "compute_exercise4"
+- !private "compute_exercise5"
 - "introduction"
 - "main"
 - !private "print"

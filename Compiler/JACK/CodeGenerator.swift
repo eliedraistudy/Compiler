@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ClassCodeGenerator{
+class CodeGenerator{
     
     var classXML: XMLElement
     var output: String = ""
@@ -23,19 +23,24 @@ class ClassCodeGenerator{
         className = classXML.elements(forName: "identifier")[0].objectValue as! String
         classVarDec = classXML.elements(forName: "classVarDec")
         subRoutineDec = classXML.elements(forName: "subroutineDec")
+        
     }
     
     public func generateVM(){
         handleVariables(classVarDec)
         handleSubroutines(subRoutineDec)
+        print(classSymbolTable.symbols);
+        print("end")
     }
     
     private func handleVariables(_ classVarDec: [XMLElement]){
         for line in classVarDec {
-            let kindString: String = line.elements(forName: "keyword")[0].objectValue as! String
+            var kindString: String = line.elements(forName: "keyword")[0].objectValue as! String
+            kindString = kindString.trimmingCharacters(in: .whitespaces)
             let kind = getKind(kindString)
             let type: String = line.elements(forName: "keyword")[1].objectValue as! String
             for id in line.elements(forName: "identifier"){
+                
                 classSymbolTable.insert(
                     name: id.objectValue as! String,
                     type: type,
@@ -47,6 +52,7 @@ class ClassCodeGenerator{
     
     private func handleSubroutines(_ subRoutineDec: [XMLElement]){
         for subroutine in subRoutineDec{
+            //print("The subroutine is:\n \(subroutine)")
             subroutineSymbolTable.reset()
             handleSubroutine(subroutine)
         }
@@ -56,11 +62,16 @@ class ClassCodeGenerator{
         
         //  handle the start of the function
         let subRoutineName = subRoutine.elements(forName: "identifier")[0].objectValue as! String
+        //print("The subroutine name is:\n\(subRoutineName)")
         let numParameters = handleSubroutineParameters(subRoutine)
+        //print(numParameters)
         output += "//   function definition: \(className).\(subRoutineName) \n"
         output += "function \(className).\(subRoutineName) \(numParameters)\n"
         
-        let statements = subRoutine.elements(forName: "statements")[0]
+        let subroutineBody = subRoutine.elements(forName: "subroutineBody")[0]
+        let statements = subroutineBody.elements(forName: "statements")[0]
+        
+        //print(statements)
         handleStatements(statements)
         
     }
@@ -115,6 +126,7 @@ class ClassCodeGenerator{
         let allStatements = statements.children!
         
         for statement in allStatements{
+            print(statement)
             let statementName = statement.name
             switch statementName{
             case "letStatement":
@@ -136,6 +148,8 @@ class ClassCodeGenerator{
                 output += "ERROR PARSING THE STATEMENT\n"
             }
         }
+        
+        
         
     }
 }

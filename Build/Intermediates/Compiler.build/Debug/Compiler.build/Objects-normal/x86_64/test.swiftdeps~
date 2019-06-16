@@ -1,11 +1,44 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
+- "xmlStr"
+- "xmlElement"
+- "CodeGen"
 provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
+- "ClassCodeGenerator"
+- "CodeGen"
+- "XMLElement"
+- "xmlElement"
+- "xmlStr"
 depends-member:
+- ["s7CVarArgP", "init"]
+- ["8Compiler18ClassCodeGeneratorC", "generateVM"]
+- ["8Compiler18ClassCodeGeneratorC", "init"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["SQ", "init"]
+- ["SH", "init"]
+- ["So9NSCopyingP", "init"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectP", "init"]
+- ["So12NSXMLElementC", "init"]
+- ["So9NSXMLNodeC", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
 depends-nominal:
+- "s7CVarArgP"
+- "8Compiler18ClassCodeGeneratorC"
+- "s28CustomDebugStringConvertibleP"
+- "s23CustomStringConvertibleP"
+- "SQ"
+- "SH"
+- "So9NSCopyingP"
+- "So8NSObjectC"
+- "So8NSObjectP"
+- "So12NSXMLElementC"
+- "So9NSXMLNodeC"
+- "10Foundation27_KeyValueCodingAndObservingP"
 depends-dynamic-lookup:
 depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
@@ -25,4 +58,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "5bf39d8b5f0094ca83c744a0da4fb204"
+interface-hash: "6fe21e78fda4f03f9801d521129705f1"

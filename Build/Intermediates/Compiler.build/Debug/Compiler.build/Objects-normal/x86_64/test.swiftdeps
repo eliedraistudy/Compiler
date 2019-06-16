@@ -1,9 +1,11 @@
 ### Swift dependencies file v0 ###
 provides-top-level:
+- "xmlStr"
 provides-nominal:
 provides-member:
 provides-dynamic-lookup:
 depends-top-level:
+- "xmlStr"
 depends-member:
 depends-nominal:
 depends-dynamic-lookup:
@@ -25,4 +27,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
 - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Security.framework/Headers/Security.apinotes"
-interface-hash: "5bf39d8b5f0094ca83c744a0da4fb204"
+interface-hash: "6a16440c0bbe8e73dbe207787135dc80"

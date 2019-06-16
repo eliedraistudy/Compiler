@@ -126,6 +126,7 @@
 		11F65BD5222C508700530FE8 /* Compiler */ = {
 			isa = PBXGroup;
 			children = (
+				11F65BDE222D128F00530FE8 /* test.swift */,
 				11A298FC227F2C8E00C6DFE6 /* JACK */,
 				11129F50224960B900EE3D4F /* VM */,
 				11F65BE5222D177700530FE8 /* Exercise5 */,
@@ -144,7 +145,6 @@
 		11F65BDD222D127B00530FE8 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				11F65BDE222D128F00530FE8 /* test.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
