@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		11129F4D22495A7600EE3D4F /* VMCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4C22495A7600EE3D4F /* VMCommand.swift */; };
 		11129F4F22495C9A00EE3D4F /* VMFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11129F4E22495C9A00EE3D4F /* VMFile.swift */; };
+		11196E9822BF641200D61894 /* CodeGenerator2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11196E9722BF641200D61894 /* CodeGenerator2.swift */; };
+		11196E9A22BF67F700D61894 /* test2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11196E9922BF67F700D61894 /* test2.swift */; };
 		1129C61E22AE9A3E00C7B8C7 /* SymbolTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1129C61D22AE9A3E00C7B8C7 /* SymbolTable.swift */; };
 		1130CF06227E2478004B208A /* VMDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1130CF05227E2478004B208A /* VMDirectory.swift */; };
 		11A298FE227F2CA800C6DFE6 /* Tokenizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A298FD227F2CA800C6DFE6 /* Tokenizer.swift */; };
@@ -22,7 +24,6 @@
 		11CAFB94229D6869005454A5 /* CodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CAFB93229D6869005454A5 /* CodeGenerator.swift */; };
 		11CF582C2247A2FD00DA4D82 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CF582B2247A2FD00DA4D82 /* Enum.swift */; };
 		11F65BD7222C508700530FE8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BD6222C508700530FE8 /* main.swift */; };
-		11F65BDF222D128F00530FE8 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BDE222D128F00530FE8 /* test.swift */; };
 		11F65BE9222D1CFB00530FE8 /* ex1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BE8222D1CFB00530FE8 /* ex1.swift */; };
 		11F65BEB222D1D0600530FE8 /* ex2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BEA222D1D0600530FE8 /* ex2.swift */; };
 		11F65BED222D1D0F00530FE8 /* ex3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F65BEC222D1D0F00530FE8 /* ex3.swift */; };
@@ -46,6 +47,8 @@
 /* Begin PBXFileReference section */
 		11129F4C22495A7600EE3D4F /* VMCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCommand.swift; sourceTree = "<group>"; };
 		11129F4E22495C9A00EE3D4F /* VMFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMFile.swift; sourceTree = "<group>"; };
+		11196E9722BF641200D61894 /* CodeGenerator2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeGenerator2.swift; sourceTree = "<group>"; };
+		11196E9922BF67F700D61894 /* test2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test2.swift; sourceTree = "<group>"; };
 		1129C61D22AE9A3E00C7B8C7 /* SymbolTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolTable.swift; sourceTree = "<group>"; };
 		1130CF05227E2478004B208A /* VMDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMDirectory.swift; sourceTree = "<group>"; };
 		11A298FD227F2CA800C6DFE6 /* Tokenizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Tokenizer.swift; sourceTree = "<group>"; wrapsLines = 1; };
@@ -59,7 +62,6 @@
 		11CF582B2247A2FD00DA4D82 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		11F65BD3222C508700530FE8 /* Compiler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Compiler; sourceTree = BUILT_PRODUCTS_DIR; };
 		11F65BD6222C508700530FE8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		11F65BDE222D128F00530FE8 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		11F65BE6222D179D00530FE8 /* ex0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex0.swift; sourceTree = "<group>"; };
 		11F65BE8222D1CFB00530FE8 /* ex1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex1.swift; sourceTree = "<group>"; };
 		11F65BEA222D1D0600530FE8 /* ex2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ex2.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				11C5FFB7228343DF009DC079 /* JACKFile.swift */,
 				11CAFB93229D6869005454A5 /* CodeGenerator.swift */,
 				1129C61D22AE9A3E00C7B8C7 /* SymbolTable.swift */,
+				11196E9722BF641200D61894 /* CodeGenerator2.swift */,
 			);
 			path = JACK;
 			sourceTree = "<group>";
@@ -126,7 +129,6 @@
 		11F65BD5222C508700530FE8 /* Compiler */ = {
 			isa = PBXGroup;
 			children = (
-				11F65BDE222D128F00530FE8 /* test.swift */,
 				11A298FC227F2C8E00C6DFE6 /* JACK */,
 				11129F50224960B900EE3D4F /* VM */,
 				11F65BE5222D177700530FE8 /* Exercise5 */,
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				11F65BF0222D1D2000530FE8 /* ex5.swift */,
+				11196E9922BF67F700D61894 /* test2.swift */,
 			);
 			path = Exercise5;
 			sourceTree = "<group>";
@@ -274,8 +277,9 @@
 				11CAFB94229D6869005454A5 /* CodeGenerator.swift in Sources */,
 				11A2F50F22316D4400C48EB8 /* ex0.swift in Sources */,
 				11129F4D22495A7600EE3D4F /* VMCommand.swift in Sources */,
+				11196E9A22BF67F700D61894 /* test2.swift in Sources */,
 				11A29902227F2CDB00C6DFE6 /* Parser.swift in Sources */,
-				11F65BDF222D128F00530FE8 /* test.swift in Sources */,
+				11196E9822BF641200D61894 /* CodeGenerator2.swift in Sources */,
 				1129C61E22AE9A3E00C7B8C7 /* SymbolTable.swift in Sources */,
 				11C5FFB62282EB3C009DC079 /* SyntaxError.swift in Sources */,
 			);

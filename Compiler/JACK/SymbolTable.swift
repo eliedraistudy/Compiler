@@ -10,10 +10,11 @@ import Foundation
 
 enum Kind:
 String {
-    case Field = "field"
+    case Field = "this"
     case Static = "static"
     case Local = "local"
     case Argument = "argument"
+    case Pointer = "pointer"
 }
 
 struct Entry{
@@ -34,6 +35,12 @@ func getKind(_ str: String) -> Kind{
         
     case Kind.Local.rawValue:
         return Kind.Local
+        
+    case "this":
+        return Kind.Field
+        
+    case "field":
+        return Kind.Field
     default:
         return Kind.Argument
     }
@@ -41,6 +48,16 @@ func getKind(_ str: String) -> Kind{
 
 class SymbolTable{
     var symbols: Dictionary<String, Entry> = [:]
+    
+    func toString() -> String
+    {
+        var str = ""
+        for item in symbols.values
+        {
+            str += "name: \(item.name) \ttype: \(item.type) \tkind: \(item.kind) \tindex: \(item.index)\n"
+        }
+        return str
+    }
     
     private func insertEntry(_ entry: Entry){
         symbols[entry.name] = entry

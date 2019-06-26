@@ -48,4 +48,24 @@ class JACKFile{
         outParse.write(sentence: "\(docXML)");
         
     }
+    
+    func tokens() -> [Token]
+    {
+        let inpF = File(filePath: inputFile.path)
+        let input = inpF.read()
+        
+        //  tokenizer
+        let tknzr = Tokenizer(read: input)
+        let tokens = tknzr.Tokenize();
+        
+        //  output for tokenizer
+        let outTknzr = File.create(filePath: outputFileTokenizer.path)
+        outTknzr.write(sentence: "<tokens>")
+        for token in tokens {
+            outTknzr.write(sentence: token.ToString())
+        }
+        outTknzr.write(sentence: "</tokens>")
+        
+        return tokens
+    }
 }

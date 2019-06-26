@@ -98,6 +98,7 @@ depends-member:
 - ["8Compiler4FileC", "URL"]
 - !private ["8Compiler4FileC", "UTF8"]
 - ["8Compiler4FileC", "create"]
+- ["8Compiler4FileC", "deinit"]
 - ["8Compiler4FileC", "fileURL"]
 - ["8Compiler4FileC", "init"]
 - !private ["8Compiler4FileC", "print"]

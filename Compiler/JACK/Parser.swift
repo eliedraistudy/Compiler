@@ -240,7 +240,7 @@ class Parser
             addToFather(tokensToAdd: [tokenTypeFunc], fatherXML: XMLSubroutineDec)
             
             // -> ('void', type) subroutineName '('
-            let nextTokens = [checkNextTokenType(typesToCheck: ["void"]),
+            let nextTokens = [checkNextTokenType(typesToCheck: ["void","int"]),
                               checkNextToken(typesToCheck: [TokenType.IDENTIFIER]),
                               checkNextToken(typesToCheck: [TokenType.SYMBOL], valuesToCheck: ["("])]
             addToFather(tokensToAdd: nextTokens, fatherXML: XMLSubroutineDec)
