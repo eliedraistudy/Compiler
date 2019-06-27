@@ -82,6 +82,7 @@ class SymbolTable{
     }
     
     
+    
     func reset(){
         symbols.removeAll()
     }

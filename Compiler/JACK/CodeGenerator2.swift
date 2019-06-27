@@ -18,6 +18,7 @@ class CodeGenerator2
     var SubroutineSymbolTable: SymbolTable = SymbolTable()
     var labelCounter = 0
     var functionType = ""
+    var isMethod: Bool = false
 
     
     private func getLabel()
@@ -248,6 +249,7 @@ class CodeGenerator2
             while( isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["constructor", "function", "method"]) )
             {
                 //  subroutineDec -> (constructor | function | method)(void|type)subroutineName(parameterList)subRoutineBody
+                isMethod = false;
                 CompileSubroutineDec()
             }
             
@@ -309,11 +311,19 @@ class CodeGenerator2
         
         //  parameters
         _ = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["("])
+        if(functionKindToken.value == "method")
+        {
+            isMethod = true
+            //  if is Method, insert in the argument table first the object
+            SubroutineSymbolTable.insert(name: "this", type: ClassName, kind: Kind.Argument)
+        }
         _ = CompileParameterList()
         _ = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: [")"])
         
         
+        
         let funcName = ClassName + "." + functionNameToken.value
+        
         CompileSubroutineVarDec(funcName)
         
         //  body
@@ -332,13 +342,15 @@ class CodeGenerator2
             writeCall("Memory.alloc", 1)
             writePop("pointer", 0)
         }
+        
         else if(functionKindToken.value == "method")
         {
-            SubroutineSymbolTable.insert(name: "this", type: ClassName, kind: Kind.Argument)
-            writeCommentary("THIS = arg[0]")
+            isMethod = true;
             writePush("argument", 0)
             writePop("pointer", 0)
         }
+        
+        
         
         CompileSubroutineBody()
         
@@ -377,6 +389,7 @@ class CodeGenerator2
         _ = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["{"])
         
         var nlocal = 0
+        
         while(isNext(typesToCheck: [.KEYWORD], valuesToCheck: ["var"]))
         {
             nlocal += CompileVarDec()
@@ -554,6 +567,10 @@ class CodeGenerator2
                 {
                     write("neg")
                 }
+                else if(op.value == "~")
+                {
+                    write("not")
+                }
             }
             
             
@@ -588,10 +605,14 @@ class CodeGenerator2
             }
             else if(keyValue == "true")
             {
-                writePush("constant", 1)
-                write("neg")
+                writePush("constant", 0)
+                write("not")
             }
             else if(keyValue == "false")
+            {
+                writePush("constant", 0)
+            }
+            else if(keyValue == "null")
             {
                 writePush("constant", 0)
             }
@@ -608,8 +629,9 @@ class CodeGenerator2
         
         _  = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["["])
         
-        writePush(arr.kind.rawValue, arr.index)
+        
         CompileExpression()
+        writePush(arr.kind.rawValue, arr.index)
         write("add")
         writePop("pointer", 1)
         writePush("that", 0)
@@ -643,9 +665,10 @@ class CodeGenerator2
         let varNameEntry = search(varName)!
         if(isNext(typesToCheck: [.SYMBOL], valuesToCheck: ["["]))
         {
-            writePush(varNameEntry.kind.rawValue, varNameEntry.index)
+            
             _ = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["["])
             CompileExpression()
+            writePush(varNameEntry.kind.rawValue, varNameEntry.index)
             _ = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["]"])
             write("add")
             _ = checkNextToken(typesToCheck: [.SYMBOL], valuesToCheck: ["="])

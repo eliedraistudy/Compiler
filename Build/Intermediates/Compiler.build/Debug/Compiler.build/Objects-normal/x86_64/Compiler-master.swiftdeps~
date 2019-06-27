@@ -1,6 +1,6 @@
 version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
 options: "b2c404f707bf5827aed63e4bc8444b25"
-build_time: [1561361715, 248185000]
+build_time: [1561666352, 613135000]
 inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1560692957, 684583607]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Tokenizer.swift": [1559048318, 661423382]
@@ -13,15 +13,15 @@ inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise3/ex3.swift": [1559048318, 655894444]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Token.swift": [1559048318, 660947995]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise4/ex4.swift": [1559048318, 657887592]
-  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/ex5.swift": [1561319451, 201584306]
+  "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/ex5.swift": [1561364197, 94648538]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Tokens.swift": [1559048318, 661970175]
   "/Users/cyberoot/Documents/Compiler/Compiler/file.swift": [1559048318, 659320457]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/JACKFile.swift": [1561276821, 990545644]
-  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/CodeGenerator.swift": [1561282434, 912351476]
+  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/CodeGenerator.swift": [1561364197, 111376585]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise0/ex0.swift": [1559048318, 649374524]
   "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1559048318, 663206431]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/test2.swift": [1561276558, 640430961]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Parser.swift": [1561238157, 320622087]
-  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/CodeGenerator2.swift": [1561361713, 822711515]
-  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/SymbolTable.swift": [1561322092, 31694196]
+  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/CodeGenerator2.swift": [1561666350, 956491996]
+  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/SymbolTable.swift": [1561666013, 171779238]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/SyntaxError.swift": [1559048318, 660722415]

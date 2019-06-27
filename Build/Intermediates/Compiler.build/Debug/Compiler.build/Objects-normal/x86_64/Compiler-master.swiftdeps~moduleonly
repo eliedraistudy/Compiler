@@ -1,6 +1,6 @@
 version: "Apple Swift version 5.0.1 (swiftlang-1001.0.82.4 clang-1001.0.46.5)"
 options: "b2c404f707bf5827aed63e4bc8444b25"
-build_time: [1561364197, 249508000]
+build_time: [1561666743, 991355000]
 inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/main.swift": [1560692957, 684583607]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Tokenizer.swift": [1559048318, 661423382]
@@ -22,6 +22,6 @@ inputs:
   "/Users/cyberoot/Documents/Compiler/Compiler/VM/VMCommand.swift": [1559048318, 663206431]
   "/Users/cyberoot/Documents/Compiler/Compiler/Exercise5/test2.swift": [1561276558, 640430961]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/Parser.swift": [1561238157, 320622087]
-  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/CodeGenerator2.swift": [1561364139, 844652763]
-  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/SymbolTable.swift": [1561322092, 31694196]
+  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/CodeGenerator2.swift": [1561666734, 276790588]
+  "/Users/cyberoot/Documents/Compiler/Compiler/JACK/SymbolTable.swift": [1561666013, 171779238]
   "/Users/cyberoot/Documents/Compiler/Compiler/JACK/SyntaxError.swift": [1559048318, 660722415]
