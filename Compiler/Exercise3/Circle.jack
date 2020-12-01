@@ -1,0 +1,132 @@
+class Circle
+{
+    // Attributes of Circle : Position(x, y) and Radius
+    field int x, y, radius;
+    field int deplacement;
+
+    // *** Constructor *** //
+    constructor Circle new(int _x, int _y, int _radius)
+    {
+        let x = _x;
+        let y = _y;
+        let radius = _radius;
+
+        let deplacement = 10;
+
+        return this;
+    }
+
+    // *** Destructor *** //
+    method void dispose() 
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    // *** Getters *** //
+    method int getX()
+    {
+        return x;
+    }
+
+    method int getY()
+    {
+        return y;
+    }
+
+    method int getRadius()
+    {
+        return radius;
+    }
+
+    // *** Draw Circle *** //
+    method void draw()
+    {
+        do Screen.setColor(true);
+        do Screen.drawCircle(x, y, radius);
+        return;
+    }
+
+    // *** Circle deplacement *** //
+    // The deplacements are regulated by the "deplacement" value, 
+    // defined above.
+    method void moveUp()
+    {
+        if ((y - radius) > 1)
+        {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            let y = y - deplacement;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, radius);
+        }
+        /** Set the Circle at the top limit */
+        else
+        {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, radius, radius);
+        }
+        return;
+    }
+
+    method void moveDown() {
+        if ((y + radius) < 254) 
+        {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            let y = y + deplacement;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, radius);
+        }
+        /** Set the Circle at the bottom limit */
+        else
+        {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, 254 - radius, radius);
+        }
+        return;
+    }
+
+    method void moveLeft() {
+        if ((x - radius) > 1) {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            let x = x - deplacement;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, radius);
+        }
+        /** Set the Circle at the left limit */
+        else
+        {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            do Screen.setColor(true);
+            do Screen.drawCircle(radius, y, radius);
+        }
+        return;
+    }
+
+    method void moveRight() {
+        if ((x + radius) < 510) 
+        {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            let x = x + deplacement;
+            do Screen.setColor(true);
+            do Screen.drawCircle(x, y, radius);
+        }
+        /** Set the Circle at the left limit */
+        else
+        {
+            do Screen.setColor(false);
+            do Screen.drawCircle(x, y, radius);
+            do Screen.setColor(true);
+            do Screen.drawCircle(510 - radius, y, radius);
+        }
+        return;
+    }
+}

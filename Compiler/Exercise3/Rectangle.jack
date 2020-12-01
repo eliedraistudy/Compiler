@@ -1,0 +1,50 @@
+class Rectangle
+{
+    // Attributes
+    field int topX, topY, botX, botY;
+
+    // *** Constructor *** //
+    constructor Rectangle new(int _topX, int _topY, int _botX, int _botY)
+    {
+        let topX = _topX;
+        let topY = _topY;
+        let botX = _botX;
+        let botY = _botY;
+        return this;
+    }
+
+    // *** Destructor *** //
+    method void dispose() 
+    {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    // *** Draw Rectangle *** //
+    method void draw()
+    {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(topX, topY, botX, botY);
+        return;
+    }
+
+    // *** Check Collisions with the inputed circle *** //
+    method boolean checkCollisions(Circle circle)
+    {
+        if ((circle.getX() + circle.getRadius()) > (topX - 1)) // is right from the rectangle
+        {
+            if ((circle.getX() - circle.getRadius()) < (botX - 1)) // is left from the rectangle
+            {
+                if ((circle.getY() + circle.getRadius()) > (topY - 1)) // is down from the rectangle
+                {
+                    if ((circle.getY() - circle.getRadius()) < (botY - 1)) // is up from the rectangle
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+                    
+        return false;
+    }
+}

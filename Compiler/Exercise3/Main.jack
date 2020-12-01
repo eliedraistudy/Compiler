@@ -1,0 +1,23 @@
+class Main
+{
+    function void main()
+    {
+        // ******* 510 * 254 ********
+
+        var CircleGame game;
+        //var Rectangle r[3];
+
+        var Array ar;
+        var Rectangle r;
+        let ar = Array.new(1);
+
+        let ar[0] = Rectangle.new(1,1,2,2);
+        let r = ar[0];
+        do r.draw();
+
+        let game = CircleGame.new();
+        do game.startGame();
+
+        return;
+    }
+}

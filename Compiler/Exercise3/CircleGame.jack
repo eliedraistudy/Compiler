@@ -1,0 +1,391 @@
+class CircleGame
+{
+    field Rectangle r1, r21, r22, r31, r32, r33;
+    field Array arrayRectangles;
+
+    field Rectangle s1, s2, s3;
+    field Array arraySquares;
+
+    field Circle c1, c2, c3;
+    field Array arrayCircles;
+
+    field Rectangle rectangle;
+    field Rectangle square;
+    field Circle circle;
+
+    field int lenghtRectangles, lenghtSquares, lenghtCircles;
+
+    field int direction;
+    field int level;
+    field int i;
+
+    field boolean isInGame;
+    field boolean isInLevel;
+
+    // *** Constructor *** //
+    constructor CircleGame new()
+    {
+        let lenghtRectangles = 6;
+        let lenghtSquares = 3;
+        let lenghtCircles = 3;
+
+        let arrayRectangles = Array.new(lenghtRectangles);
+        let arrayRectangles[0] = Rectangle.new(240,150,270,254);
+        let arrayRectangles[1] = Rectangle.new(100,0,150,150);
+        let arrayRectangles[2] = Rectangle.new(280,104,330,254);
+        let arrayRectangles[3] = Rectangle.new(0,97,150,157);
+        let arrayRectangles[4] = Rectangle.new(240,0,340,150);
+        let arrayRectangles[5] = Rectangle.new(420,97,510,137);
+
+        // let r1  = Rectangle.new(240,150,270,254);
+        // let r21 = Rectangle.new(100,0,150,150);
+        // let r22 = Rectangle.new(280,104,330,254);
+        // let r31 = Rectangle.new(0,97,150,157);
+        // let r32 = Rectangle.new(240,0,340,150);
+        // let r33 = Rectangle.new(420,97,510,137);
+
+        let arraySquares = Array.new(lenghtSquares);
+        let arraySquares[0] = Rectangle.new(450,194,510,254);
+        let arraySquares[1] = Rectangle.new(400,194,460,254);
+        let arraySquares[2] = Rectangle.new(470,0,510,60);
+
+        // let s1 = Rectangle.new(450,194,510,254);
+        // let s2 = Rectangle.new(400,194,460,254);
+        // let s3 = Rectangle.new(470,0,510,60);
+
+        let arrayCircles = Array.new(lenghtCircles);
+        let arrayCircles[0] = Circle.new(30,224,30);
+        let arrayCircles[1] = Circle.new(30,30,30);
+        let arrayCircles[2] = Circle.new(90,30,30);
+
+        // let c1 = Circle.new(30,224,30);
+        // let c2 = Circle.new(30,30,30);
+        // let c3 = Circle.new(90,30,30);
+
+        let direction = 0;
+        let level = 1;
+
+        let isInGame = true;
+        let isInLevel = true;
+        
+        return this;
+    }
+
+    // *** Destructor *** //
+    method void dispose() 
+    {
+        let i = 0;
+        while (i < lenghtRectangles)
+        {
+            let rectangle = arrayRectangles[i];
+            do rectangle.dispose();
+            let i = i + 1;
+        }
+
+        let i = 0;
+        while (i < lenghtSquares)
+        {
+            let square = arraySquares[i];
+            do square.dispose();
+            let i = i + 1;
+        }
+
+        let i = 0;
+        while (i < lenghtCircles)
+        {
+            let circle = arrayCircles[i];
+            do circle.dispose();
+            let i = i + 1;
+        }
+
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    // *** Print Functions *** //
+    method void printWelcome()
+    {
+        do Output.printString("Willkommen auf dem Spiel Circle");
+        do Output.println();
+        do Output.printString("Sie mussen den Kreis im Quadrat platzieren, ");
+        do Output.println();
+        do Output.printString("ohne die Rechtecke zu beruhren und");
+        do Output.println();
+        do Output.printString("ohne die Kanten zu beruhren !!");
+        do Output.println();
+        do Output.printString("Der Spiel beggint in 5 Sekkunden");
+        do Output.println();
+        do Sys.wait(150);
+        return;
+    }
+
+    method void printShapes()
+    {
+        do Screen.clearScreen();
+        if (level = 1)
+        {
+            let rectangle = arrayRectangles[level - 1];
+            let square = arraySquares[level - 1];
+            let circle = arrayCircles[level - 1];
+
+            do rectangle.draw();
+            do square.draw();
+            do circle.draw();
+        }
+        if (level = 2)
+        {
+            let i = 1;
+            while (i < level + 1)
+            {
+                let rectangle = arrayRectangles[i];
+                do rectangle.draw();
+                let i = i + 1;
+            }
+
+            let square = arraySquares[level - 1];
+            let circle = arrayCircles[level - 1];
+
+            do square.draw();
+            do circle.draw();
+        }
+        if (level = 3)
+        {
+            let i = level;
+            while (i < lenghtRectangles)
+            {
+                let rectangle = arrayRectangles[i];
+                do rectangle.draw();
+                let i = i + 1;
+            }
+
+            let square = arraySquares[level - 1];
+            let circle = arrayCircles[level - 1];
+
+            do s3.draw();
+            do c3.draw();
+        }
+        return;
+    }
+
+    method void printLose()
+    {
+        do clear();
+        do Output.printString("Sorry, you lost the game");
+        do Output.println();
+        do Output.printString("See you soon in our beautiful game ;)");
+        do Output.println();
+        return;
+    }
+
+    method void printWin()
+    {
+        var int nextLevel;
+
+        do clear();
+        if (level < 3)
+        {
+            let nextLevel = level + 1;
+
+            do Output.printString("Perfect, you won the level ");
+            do Output.printInt(level);
+            do Output.println();
+
+            do Output.printString("Let's play the level ");
+            do Output.printInt(nextLevel);
+            do Output.println();
+        }
+        else
+        {
+            do Output.printString("Congratulation, you won the game !!");
+        }
+        return;
+    }
+
+    method void clear()
+    {
+        do Screen.clearScreen();
+        return;
+    }
+
+    // *** Circle movement functions *** //
+    method void moveAndCheck(Circle c)
+    {
+        do setOneMovementToCircle(c);
+        if (checkCollisionWithRectangle())
+        {
+            do printLose();
+            do endGame();
+        }
+
+        if (checkCollisionWithSquare())
+        {
+            do printWin();
+            let level = level + 1;
+            let isInLevel = false;
+            let isInGame = true;
+
+            do Sys.wait(10000);
+        }
+
+        return;
+    }
+
+    method void setOneMovementToCircle(Circle c)
+    {
+        var char key;
+
+        // waits for a key to be pressed.
+        while (key = 0) {
+            let key = Keyboard.keyPressed();
+            do moveCircle(c);
+        }
+
+        // Up Down Left Right
+        if (key = 131) {
+            let direction = 1;
+        }
+        if (key = 133) {
+            let direction = 2;
+        }
+        if (key = 130) {
+            let direction = 3;
+        }
+        if (key = 132) {
+            let direction = 4;
+        }
+
+        // waits for the key to be released.
+        while (~(key = 0)) {
+            let key = Keyboard.keyPressed();
+            do moveCircle(c);
+        }
+
+        let direction = 0;
+            
+        return;
+	}
+
+    method void moveCircle(Circle c)
+    {
+        if (direction = 1) {
+            do c.moveUp();
+        }
+        if (direction = 2) {
+            do c.moveDown();
+        }
+        if (direction = 3) {
+            do c.moveLeft();
+        }
+        if (direction = 4) {
+            do c.moveRight();
+        }
+
+        do Sys.wait(5); // Delays the next movement.
+        return;
+    }
+
+    // *** Collisions Functions *** //
+    method boolean checkCollisionWithRectangle()
+    {
+        var boolean result;
+        
+        if (level = 1)
+        {
+            let rectangle = arrayRectangles[level - 1];
+            let circle = arrayCircles[level - 1];
+            let result = rectangle.checkCollisions(circle);
+        }
+        if (level = 2)
+        {
+            let circle = arrayCircles[level - 1];
+            let i = 0;
+
+            while (i < level)
+            {
+                let rectangle = arrayRectangles[i + 1];
+                if (rectangle.checkCollisions(circle))
+                {
+                    return true;
+                }
+                let i = i + 1;
+            }
+            return false;
+        }
+        if (level = 3)
+        {
+            let circle = arrayCircles[level - 1];
+            let i = 3;
+
+            while (i < lenghtRectangles)
+            {
+                let rectangle = arrayRectangles[i];
+                if (rectangle.checkCollisions(circle))
+                {
+                    return true;
+                }
+                let i = i + 1;
+            }
+            return false;
+        }
+
+        return result;
+    }
+
+    method boolean checkCollisionWithSquare()
+    {
+        var boolean result;
+        
+        if (level = 1)
+        {
+            let square = arraySquares[level - 1];
+            let circle = arrayCircles[level - 1];
+            let result = square.checkCollisions(circle);
+
+            // let result = s1.checkCollisions(c1);
+        }
+        if (level = 2)
+        {
+            let square = arraySquares[level - 1];
+            let circle = arrayCircles[level - 1];
+            let result = square.checkCollisions(circle);
+
+            // let result = s2.checkCollisions(c2);
+        }
+        if (level = 3)
+        {
+            let square = arraySquares[level - 1];
+            let circle = arrayCircles[level - 1];
+            let result = square.checkCollisions(circle);
+
+            // let result = s3.checkCollisions(c3);
+        }
+
+        return result;
+    }
+
+    // *** Start and End Game *** //
+    method void startGame()
+    {
+        var Circle c;
+        do printWelcome();
+        while (isInGame)
+        {
+            let isInLevel = true;
+            do printShapes();
+            while (isInLevel)
+            {
+                let c = arrayCircles[level - 1];
+                do moveAndCheck(c);
+            }
+        }
+
+        return;
+    }
+
+    method void endGame()
+    {
+        do dispose();
+        do Sys.halt();
+        return;
+    }
+}
